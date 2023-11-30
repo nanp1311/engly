@@ -514,6 +514,16 @@
             "tag": "Translation",
             "sentence": "SyntaxError: Non-ASCII character '\\xe8' in file setup.py on line 6, but no encoding declared; see http://python.org/dev/peps/pep-0263/ for details",
             "response": "この英文の日本語訳は次の通りです：「setup.pyファイルの6行目に非ASCII文字'\\xe8'がありますが、エンコーディングが宣言されていません。詳細については、http://python.org/dev/peps/pep-0263/を参照してください。」\n\n主語：Non-ASCII character\n動詞：is in file"
+        },
+        {
+            "tag": "Word",
+            "sentence": "ImportError: cannot import name 'APIKEY' from 'apikey' (/home/nanp/.local/lib/python3.8/site-packages/apikey/__init__.py)",
+            "response": "ImportError: インポートエラー（モジュールの読み込みエラー）\ncannot import name: 名前をインポートできません\n'APIKEY': 'APIKEY'という名前\nfrom 'apikey': 'apikey'というモジュールから\n/home/nanp/.local/lib/python3.8/site-packages/apikey/__init__.py: /home/nanp/.local/lib/python3.8/site-packages/apikey/__init__.py（ファイルパス）"
+        },
+        {
+            "tag": "Translation",
+            "sentence": "ImportError: cannot import name 'APIKEY' from 'apikey' (/home/nanp/.local/lib/python3.8/site-packages/apikey/__init__.py)",
+            "response": "主語: ImportError\n動詞: cannot import\n\n日本語訳: ImportError: 'apikey'から'APIKEY'をインポートできません (/home/nanp/.local/lib/python3.8/site-packages/apikey/__init__.py)"
         }
     ]
 }

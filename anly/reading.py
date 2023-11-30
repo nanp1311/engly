@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import wx
 import openai
-from apikey import APIKEY
+from libs.apikey import APIKEY
 import json
 from libs.common import json_open, json_write, path
 
