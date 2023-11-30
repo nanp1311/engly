@@ -1,0 +1,672 @@
+{
+  "listen": {
+    "meaning": "[動]イベントを監視する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "error": {
+    "meaning": "[名]致命的な欠陥",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "push": {
+    "meaning": "[名]最後尾へ追加する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "interface": {
+    "meaning": "[名]境界面、約束事",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "commit": {
+    "meaning": "[動]引っ込みがつかない約束をする、確約する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "join": {
+    "meaning": "[動]参加する、結合する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "merge": {
+    "meaning": "[動]ひとつにする",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "concat": {
+    "meaning": "[動]文字列を連結する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "append": {
+    "meaning": "[動]文章の最後に追加する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "relation": {
+    "meaning": "[名]関係、テーブル間のつながり",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "association": {
+    "meaning": "[名]つながり、協会",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "evidence": {
+    "meaning": "[名]キャプチャ、根拠",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "pending": {
+    "meaning": "[名]保留",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "domain": {
+    "meaning": "[名]領域",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "generate": {
+    "meaning": "[動]時間と労力をかけて生み出す",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "fetch": {
+    "meaning": "[動]行って取ってくる",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "factory": {
+    "meaning": "[名]インスタンスを生成する工場",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "construct": {
+    "meaning": "[動]オブジェクトを新しく生成する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "compose": {
+    "meaning": "[動]構成する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "continue": {
+    "meaning": "[動]処理を続行する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "development": {
+    "meaning": "[名]開発",
+    "correct": 1,
+    "incorrect": 1
+  },
+  "progress": {
+    "meaning": "[動]進行する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "complete": {
+    "meaning": "[動]正常に完了する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "launch": {
+    "meaning": "[動]アプリを起動する、サービスを開始する",
+    "correct": 1,
+    "incorrect": 1
+  },
+  "implement": {
+    "meaning": "[動]実装する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "sanitise": {
+    "meaning": "[動]解毒する、無害化する",
+    "correct": 0,
+    "incorrect": 1
+  },
+  "remove": {
+    "meaning": "[動]取り除く、削除する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "conflict": {
+    "meaning": "[名]修正と修正の衝突",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "fault": {
+    "meaning": "[名]欠陥",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "close": {
+    "meaning": "[動]接続を切る、資源を解放する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "stream": {
+    "meaning": "[名]データの流れ",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "import": {
+    "meaning": "[動]ほかのファイルを取り込む",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "migrate": {
+    "meaning": "[動]移住する、移植する",
+    "correct": 0,
+    "incorrect": 1
+  },
+  "binary": {
+    "meaning": "[名]2進法、機械語",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "octal": {
+    "meaning": "[名]8進法",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "decimal": {
+    "meaning": "[名]10進法",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "hexadecimal": {
+    "meaning": "[名]16進法",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "format": {
+    "meaning": "[名]型、ファイル形式",
+    "correct": 2,
+    "incorrect": 1
+  },
+  "store": {
+    "meaning": "[動]データを蓄える、貯蓄",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "asset": {
+    "meaning": "[名]資産",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "dump": {
+    "meaning": "[動]データを出力する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "row": {
+    "meaning": "[名]行",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "column": {
+    "meaning": "[名]列",
+    "correct": 0,
+    "incorrect": 1
+  },
+  "archive": {
+    "meaning": "[動]圧縮して保存する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "attribute": {
+    "meaning": "[名]所有者が推測できる属性",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "analyze": {
+    "meaning": "[動]分析する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "alter": {
+    "meaning": "[動]スキーマに変更を加える",
+    "correct": 1,
+    "incorrect": 1
+  },
+  "convert": {
+    "meaning": "[動]ファイルの形式やサイズを変える",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "parse": {
+    "meaning": "[動]構文解析する、変換する",
+    "correct": 0,
+    "incorrect": 1
+  },
+  "populate": {
+    "meaning": "[動]データで埋める",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "cascade": {
+    "meaning": "[名]連鎖反応",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "pluck": {
+    "meaning": "[動]摘み取る",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "mutation": {
+    "meaning": "[名]変異",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "string": {
+    "meaning": "[名]文字列、ひとつなぎの文字",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "char": {
+    "meaning": "[名]文字、固定長文字列",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "varchar": {
+    "meaning": "[名]可変長文字列",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "integer": {
+    "meaning": "[名]整数",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "float": {
+    "meaning": "[名]浮動小数点数",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "set": {
+    "meaning": "[名]重複を許さない集合",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "array": {
+    "meaning": "[名]配列",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "hash": {
+    "meaning": "[動]切り刻む",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "map": {
+    "meaning": "[動]対応づける",
+    "correct": 2,
+    "incorrect": 0
+  },
+  "function": {
+    "meaning": "[名]関数",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "define": {
+    "meaning": "[動]定義する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "strict": {
+    "meaning": "[形]厳格モード",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "local": {
+    "meaning": "[形]局所的な、地方の、閉じた空間の",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "global": {
+    "meaning": "[形]大域的な、誰からでも見える",
+    "correct": 2,
+    "incorrect": 1
+  },
+  "scope": {
+    "meaning": "[名](見える)範囲、スコープ",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "refer": {
+    "meaning": "[動]参照する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "annotate": {
+    "meaning": "[動]注釈を付ける",
+    "correct": 2,
+    "incorrect": 0
+  },
+  "schema": {
+    "meaning": "[名]枠組、スキーマ、概要",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "environment": {
+    "meaning": "[名]環境",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "status": {
+    "meaning": "[名]時間で変化する状況",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "initialize": {
+    "meaning": "[動]初期化する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "layout": {
+    "meaning": "[名]配置、外側の共通部分",
+    "correct": 2,
+    "incorrect": 0
+  },
+  "offset": {
+    "meaning": "[名]ファイル内の現在位置",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "locale": {
+    "meaning": "[名]各地域用の設定",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "feature": {
+    "meaning": "[名]アプリの新しい目玉機能",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "trait": {
+    "meaning": "[名]特徴、性格",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "context": {
+    "meaning": "[名]背景、文脈、コンテキスト",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "current": {
+    "meaning": "[形]いま対象としている、いま乗っている文脈上の",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "async": {
+    "meaning": "[形]非同期の、個々が独立している",
+    "correct": 0,
+    "incorrect": 1
+  },
+  "temporary": {
+    "meaning": "[形]一時的な",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "state": {
+    "meaning": "[名]状態",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "property": {
+    "meaning": "[名]性質、所有物、プロパティ",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "finally": {
+    "meaning": "[副]最後の、実行を保証する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "entry": {
+    "meaning": "[名]プログラムの起点、見出し、登録事項",
+    "correct": 0,
+    "incorrect": 1
+  },
+  "permit": {
+    "meaning": "[動]実行を許可する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "authorization": {
+    "meaning": "[名]パワー(権威、権限)の授与、認可",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "private": {
+    "meaning": "[動]私的な、直接見られない",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "public": {
+    "meaning": "[形]公の窓口の",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "meta": {
+    "meaning": "[形]二次元の、高次元の",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "require": {
+    "meaning": "[動]必要とする",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "depend": {
+    "meaning": "[動]依存する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "request": {
+    "meaning": "[名]要求、リクエスト",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "invalid": {
+    "meaning": "[形](法的に)受け入れられない",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "flush": {
+    "meaning": "[動]バッファないのデータを掃き出す",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "dispatch": {
+    "meaning": "[動]送る、急いで送り出す",
+    "correct": 0,
+    "incorrect": 1
+  },
+  "render": {
+    "meaning": "[動]送り返す",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "submit": {
+    "meaning": "[動]提出する、送信する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "yield": {
+    "meaning": "[動]制御を譲る",
+    "correct": 2,
+    "incorrect": 0
+  },
+  "assign": {
+    "meaning": "[動]あてがう、代入する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "alert": {
+    "meaning": "[名]警告、異常の通知",
+    "correct": 2,
+    "incorrect": 0
+  },
+  "exception": {
+    "meaning": "[名]例外",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "assert": {
+    "meaning": "[動]主張する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "path": {
+    "meaning": "[名]コマンドへ通じる道、ファイルの存在場所",
+    "correct": 0,
+    "incorrect": 2
+  },
+  "node": {
+    "meaning": "[名]節点、ネットワーク機器",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "ignore": {
+    "meaning": "[動]無視する、除外する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "except": {
+    "meaning": "[動]除外する、ブラックリスト",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "unique": {
+    "meaning": "[形]一意の",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "trim": {
+    "meaning": "[動]端の空白を除去する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "execute": {
+    "meaning": "[動]実行する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "kill": {
+    "meaning": "[動]プロセスを止める",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "abort": {
+    "meaning": "[動]中断する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "failure": {
+    "meaning": "[名]失敗",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "variable": {
+    "meaning": "[名]変数",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "load": {
+    "meaning": "[動]メモリに読み込む、負荷をかける",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "invoke": {
+    "meaning": "[動]呼び出す",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "interrupt": {
+    "meaning": "[名]割り込む",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "compress": {
+    "meaning": "[動]圧縮する",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "identify": {
+    "meaning": "[動]認識する、ファイルが見つかる",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "deprecated": {
+    "meaning": "[形]非推奨の、廃止予定の",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "halt": {
+    "meaning": "[動]コンピュータを停止する",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "directory": {
+    "meaning": "[名]ファイルを分類・整理するための保管場所",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "tee": {
+    "meaning": "ゴルフをする、始める、開始する、怒らせる、批判する？",
+    "correct": 1,
+    "incorrect": 1
+  },
+  "complicated": {
+    "meaning": "[形]複雑な",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "apparently": {
+    "meaning": "[副]明らかに、見たところでは",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "beg": {
+    "meaning": "[動]頼む、懇願する、はぐらかす",
+    "correct": 1,
+    "incorrect": 0
+  },
+  "exactly": {
+    "meaning": "正確に",
+    "correct": 1,
+    "incorrect": 1
+  },
+  "dimension": {
+    "meaning": "[名]大きさ",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "leap": {
+    "meaning": "飛躍",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "duplication": {
+    "meaning": "重複、複製",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "faster": {
+    "meaning": "より速く",
+    "correct": 0,
+    "incorrect": 0
+  },
+  "allocating": {
+    "meaning": "割り当てる",
+    "correct": 0,
+    "incorrect": 0
+  }
+}
