@@ -1,15 +1,13 @@
 #!/usr/bin/python3
 import wx
-from libs.common import json_open, json_write, path, set_font
+from libs.common import json_open, json_write, path, set_font, add_word
 
 class MyFrame(wx.Frame):
     def __init__(self, parent, ID, title):
         # わからん
-        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 500))
+        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 400))
         # words.jsonのパス
         self.filename = path("words.json")
-        # jsonファイルの読み込み
-        self.json_data = json_open(self.filename)
         # おまじない
         self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__set_word()
@@ -21,7 +19,9 @@ class MyFrame(wx.Frame):
     def __set_word(self):
         self.wordlist = [""]
         self.meaninglist = {}
-        for key, value in self.json_data.items():
+        # jsonファイルの読み込み
+        json_data = json_open(self.filename)
+        for key, value in json_data.items():
             self.wordlist.append(key)
             self.meaninglist[key] = value["meaning"]
 
@@ -119,7 +119,7 @@ class MyFrame(wx.Frame):
         meaning = self.txtCtrl_meaning.GetValue().strip()
         if word != "" and meaning != "": #テキストボックスが空白でなければ
             # 単語の追加
-            self.add_word(word, meaning, self.filename, self.json_data)
+            add_word(word, meaning, self.filename)
             # 成功時のメッセージ表示
             self.txt_success.SetForegroundColour('#0000FF')
             self.txt_success.SetLabel( "\"" + word + "\" " + "added.")
@@ -134,16 +134,6 @@ class MyFrame(wx.Frame):
             self.txt_success.SetLabel("Enter a word and meaning.")
         # レイアウト整理
         self.Layout()
-
-    # jsonファイルに単語と意味を追加する
-    def add_word(self, word, meaning, filename, data):
-        new_word = {
-                    "meaning": meaning,
-                    "correct": 0,
-                    "incorrect": 0
-                    }
-        data[word] = new_word
-        json_write(filename, data)
 
     # xボタン押下時の処理
     def onExit(self, event):

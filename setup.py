@@ -10,6 +10,6 @@ setup(
      packages=find_packages(),
     entry_points="""
       [console_scripts]
-      anly = Anly.main:hello
+      anly = Anly.title:__main__
     """,
 )

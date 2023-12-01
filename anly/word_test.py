@@ -12,7 +12,7 @@ from libs.newdate import history_renewal
 # メインフレームクラス
 class SampleFrame(wx.Frame):
     def __init__(self, parent, ID, title):
-        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 600))
+        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(1000, 800))
         # jsonファイルのパス
         self.words_file = path("words.json")
         self.history_file = path("history.json")
@@ -48,28 +48,28 @@ class SampleFrame(wx.Frame):
         # 回答ボタン1
         self.ans1 = wx.Button(self, label="1")
         self.ans1.Bind(wx.EVT_BUTTON, self.judge)
-        self.ans1.SetFont(set_font(15))
+        self.ans1.SetFont(set_font(20))
         self.ans1.SetBackgroundColour('#FFFFFF')
         self.ans1.Disable()
 
         # 回答ボタン2
         self.ans2 = wx.Button(self, label="2")
         self.ans2.Bind(wx.EVT_BUTTON, self.judge)
-        self.ans2.SetFont(set_font(15))
+        self.ans2.SetFont(set_font(20))
         self.ans2.SetBackgroundColour('#FFFFFF')
         self.ans2.Disable()
 
         # 回答ボタン3
         self.ans3 = wx.Button(self, label="3")
         self.ans3.Bind(wx.EVT_BUTTON, self.judge)
-        self.ans3.SetFont(set_font(15))
+        self.ans3.SetFont(set_font(20))
         self.ans3.SetBackgroundColour('#FFFFFF')
         self.ans3.Disable()
 
         # 回答ボタン4
         self.ans4 = wx.Button(self, label="4")
         self.ans4.Bind(wx.EVT_BUTTON, self.judge)
-        self.ans4.SetFont(set_font(15))
+        self.ans4.SetFont(set_font(20))
         self.ans4.SetBackgroundColour('#FFFFFF')
         self.ans4.Disable()
 
