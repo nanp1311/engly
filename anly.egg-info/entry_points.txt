@@ -1,0 +1,4 @@
+
+      [console_scripts]
+      anly = anly.title:main
+    

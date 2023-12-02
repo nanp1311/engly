@@ -1,7 +1,8 @@
+#!/usr/bin/python3
 from setuptools import setup, find_packages
 
 setup(
-    name="Anly",
+    name="anly",
     version='1.0',
     description='English Learning Application',
     author='nanp1311',
@@ -10,6 +11,6 @@ setup(
      packages=find_packages(),
     entry_points="""
       [console_scripts]
-      anly = Anly.title:__main__
+      anly = anly.title:main
     """,
 )

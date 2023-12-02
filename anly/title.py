@@ -54,7 +54,15 @@ class SampleApp(wx.App):
         frame.Show(True)
         return True
 
+def main():
+    app = SampleApp()
+    app.MainLoop()
+
+main()
+
 # メイン
+'''
 if __name__ == "__main__":
     app = SampleApp()
     app.MainLoop()
+'''
