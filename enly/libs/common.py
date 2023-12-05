@@ -1,7 +1,7 @@
 # 複数のファイルに共通する関数の定義
-import os
 import wx
 import json
+from os.path import expanduser
 
 # jsonファイルの読み込み
 def json_open(filename):
@@ -15,7 +15,8 @@ def json_write(filename, json_data):
 
 # ファイルのパスを返す
 def path(filename, dir="data"):
-    return os.getcwd() + "/../" + dir + "/" + filename # 返すのはこの関数を実行したファイルが存在するパス
+    home = expanduser("~")
+    return home + "/.enly_data/" + dir + "/" + filename # 返すのはこの関数を実行したファイルが存在するパス
 
 # 指定したサイズのフォントを返す
 def set_font(i):

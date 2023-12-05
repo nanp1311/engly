@@ -18,6 +18,7 @@ class SampleFrame(wx.Frame):
         # カウントのための変数
         self.count = 0
         # 必要なやつ
+        self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__create_widget()
         self.__do_layout()
 
@@ -141,13 +142,19 @@ class SampleFrame(wx.Frame):
     # ChatGPTの返答をjsonファイルに保存
     def write_response(self, tag, sentence, response):
         json_data = json_open(self.file_response)
-        new_content = {
-                    "tag": tag,
+        json_data[tag] = {
                     "sentence": sentence,
                     "response": response
                 }
-        json_data["ChatGPT"].append(new_content)
         json_write(self.file_response, json_data)
+
+    # xボタン押下時の処理
+    def onExit(self, event):
+        dlg = wx.MessageDialog(self, "プログラムを終了しますか？", "確認", wx.YES_NO | wx.ICON_QUESTION)
+        if dlg.ShowModal() == wx.ID_YES:
+            self.Destroy()  # ウィンドウを破棄してプログラムを終了
+        else:
+            dlg.Destroy()
 
 # アプリケーションクラス
 class SampleApp(wx.App):
@@ -158,6 +165,9 @@ class SampleApp(wx.App):
         return True
 
 # メイン
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def main():
     app = SampleApp()
     app.MainLoop()
+
+#main()

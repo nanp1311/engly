@@ -1,7 +1,28 @@
-# Anly
+# Enly
 ## 概要
 - 英語学習支援アプリケーション
 - 実行ファイルはanly/anly, jsonファイルはanly/dataに存在している
+
+## 1205
+- titleで作成した各種ファイルを初期化するプログラムを実装
+- newdateにhistory_init()とreturn_today()を実装
+- newdateにHistoryWriteクラスを実装
+- クラスを使用する際は必ずインスタンスを生成する(init = HistoryWrite()みたいな感じ)
+- titleの__setup_dataにディレクトリ存在判定を追加
+
+## 1204
+- 各種プログラムの呼び出しをdef main()に変更
+- jsonファイルの管理を.anly_data(仮)に変更
+- pathで返すパスをホーム直下.anly_dataに変更
+- ホーム直下に.anly_data(仮)を作成するプログラムを実装
+'''ファイル構造
+├── data
+│   ├── history.json
+│   ├── response.json
+│   └── words.json
+└── fig
+    └── fig.html
+'''
 
 ## 1201
 - モジュールapikey.pyを作成

@@ -3,7 +3,7 @@ import random
 import wx
 import textwrap
 from libs.common import json_open, json_write, path, set_font
-from libs.newdate import history_renewal
+from libs.newdate import HistoryWrite
 
 # 色の初期値? -> #AFAFAF
 # 多用する関数(jsonファイルの読み込みとか)は別ファイルに纏めたい
@@ -16,11 +16,13 @@ class SampleFrame(wx.Frame):
         # jsonファイルのパス
         self.words_file = path("words.json")
         self.history_file = path("history.json")
+        # hisotory.jsonの更新、今日の日付の取得
+        history_write = HistoryWrite()
+        history_write.history_renewal()
+        self.today = history_write.return_today()
         # jsonファイルの読み込み
         self.words_data = json_open(self.words_file)
         self.history_data = json_open(self.history_file)
-        # hisotory.jsonの更新、今日の日付の取得
-        self.today = history_renewal()
         # 単語を入れる配列
         self.word_list = []
         # 単語をkey, 意味を値とする辞書 -> 複数の意味に対応できない
@@ -226,6 +228,9 @@ class SampleApp(wx.App):
         return True
 
 # メイン
-if __name__ == "__main__":
+#if __name__ == "__main__":
+def main():
     app = SampleApp()
     app.MainLoop()
+
+#main()

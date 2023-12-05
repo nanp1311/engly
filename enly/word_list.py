@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import wx
-from libs.common import json_open, json_write, path, set_font, add_word
+from libs.common import json_open, path, set_font, add_word
 
 class MyFrame(wx.Frame):
     def __init__(self, parent, ID, title):
@@ -150,6 +150,9 @@ class MyApp(wx.App):
         frame.Show(True)
         return True
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def main():
     app = MyApp()
     app.MainLoop()
+
+#main()
