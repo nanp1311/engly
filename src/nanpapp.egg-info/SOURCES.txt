@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+src/history.py
+src/reading.py
+src/title.py
+src/word_list.py
+src/word_test.py
+src/libs/apikey.py
+src/libs/common.py
+src/libs/newdate.py
+src/nanpapp.egg-info/PKG-INFO
+src/nanpapp.egg-info/SOURCES.txt
+src/nanpapp.egg-info/dependency_links.txt
+src/nanpapp.egg-info/entry_points.txt
+src/nanpapp.egg-info/top_level.txt

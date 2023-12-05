@@ -1,8 +1,21 @@
+Metadata-Version: 2.1
+Name: nanpapp2
+Version: 1.0.0
+Summary: English Learning Application
+Author-email: nanp1311 <pengin.na11@gmail.com>
+Project-URL: Homepage, https://github.com/nanp1311/untitled
+Project-URL: Bug Tracker, https://github.com/nanp1311/untitled/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # nanpapp
 ## 概要
 - 英語学習支援アプリケーション
 - jsonファイルは~/.ll_dataに存在している
-- python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps nanpapp2
 
 ## 1205
 - titleで作成した各種ファイルを初期化するプログラムを実装
@@ -13,10 +26,6 @@
 - api/apikeyを.ll_dataに作成
 - apiキーはapikeyファイルから読みだすように変更
 - apiキーを保存する機能をtitleに追加
-- tomlファイルを作成
-- ソース配布の.tar.gzとビルド配布の.whl -> 要検索
-- testPyPIに公開
-- LICENSE合ってるかわからない
 
 ## 1204
 - 各種プログラムの呼び出しをdef main()に変更
