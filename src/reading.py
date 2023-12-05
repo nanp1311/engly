@@ -4,8 +4,6 @@ import openai
 from libs.apikey import APIKEY
 from libs.common import json_open, json_write, path, set_font, add_word
 
-openai.api_key = APIKEY
-
 class SampleFrame(wx.Frame):
     def __init__(self, parent, ID, title):
         wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(1000, 800))
@@ -21,6 +19,7 @@ class SampleFrame(wx.Frame):
         self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__create_widget()
         self.__do_layout()
+        self.__set_apikey()
 
     # Widgetを作成するメソッド
     def __create_widget(self):
@@ -66,6 +65,13 @@ class SampleFrame(wx.Frame):
         self.sizer_all.Add(self.sizer_txt, flag=wx.ALIGN_LEFT | wx.LEFT, border=100)
         self.SetSizer(self.sizer_all)
 
+    def __set_apikey(self):
+        with open(path("apikey", "api"), "r") as f:
+            key = f.read()
+        openai.api_key = key
+        print(key)
+        print(APIKEY)
+
     # ボタン押したときの処理
     def push_word(self, event):
         flag = False
@@ -82,7 +88,6 @@ class SampleFrame(wx.Frame):
             # ChatGPTの返答をjsonファイルに保存
             self.write_response("Word", self.input_words, response)
             # 返答に含まれる単語と意味をボタン化
-            print(response)
             # 古いボタンを削除
             for i in range(0, self.count):
                 exec("self.btn_{}.Destroy()".format(i))
@@ -118,7 +123,6 @@ class SampleFrame(wx.Frame):
             assi = "英文を丁寧に翻訳します。"
             usr = self.input_trans + "この英文の日本語訳を表示してください。それに加え、この英文の主語と動詞を英語で表示してください。"
             response = self.api_response(sys, assi, usr)
-            print(response)
             # ChatGPTの返答をjsonファイルに保存
             self.write_response("Translation", self.input_trans, response)
             # ChatGPTの返答を表示

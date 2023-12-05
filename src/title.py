@@ -3,7 +3,7 @@ import os
 import wx
 import subprocess
 from os.path import expanduser
-from libs.common import json_write, set_font
+from libs.common import json_write, set_font, path
 from libs.newdate import HistoryWrite
 import word_list
 import word_test
@@ -12,8 +12,10 @@ import history
 
 class SampleFrame(wx.Frame):
     def __init__(self, parent, id, title):
-        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(400, 400))
+        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(450, 550))
         self.home_directory = expanduser("~")
+        self.flag = True
+        self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__create_widget()
         self.__do_layout()
         self.__data_setup()
@@ -34,30 +36,49 @@ class SampleFrame(wx.Frame):
         self.btn_history = wx.Button(self, label="History")
         self.btn_history.Bind(wx.EVT_BUTTON, self.history)
 
+        self.ctrl_apikey = wx.TextCtrl(self, -1, style=wx.TE_MULTILINE, size=(220,100))
+        self.ctrl_apikey.Hide()
+
+        self.btn_apikey = wx.Button(self, label="apikey")
+        self.btn_apikey.Bind(wx.EVT_BUTTON, self.apikey)
+
+        self.btn_save = wx.Button(self, label="save")
+        self.btn_save.Bind(wx.EVT_BUTTON, self.save)
+        self.btn_save.Hide()
+
     def __do_layout(self):
         sizer = wx.BoxSizer(wx.VERTICAL)
+        sizer_api = wx.BoxSizer(wx.HORIZONTAL)
         sizer.Add(self.txt, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
         sizer.Add(self.btn_list, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
         sizer.Add(self.btn_test, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
         sizer.Add(self.btn_reading, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
         sizer.Add(self.btn_history, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
+        sizer.Add(self.btn_apikey, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
+        sizer_api.Add(self.ctrl_apikey, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
+        sizer_api.Add(self.btn_save, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
+        sizer.Add(sizer_api, flag=wx.ALIGN_CENTER | wx.ALL, border=10)
         self.SetSizer(sizer)
 
     def __data_setup(self):
-        if not os.path.exists(self.home_directory + "/.enly_data"):
+        if not os.path.exists(self.home_directory + "/.ll_data"):
             home_directory = expanduser("~")
-            mk_directory = home_directory + "/.enly_data"
+            mk_directory = home_directory + "/.ll_data"
             data_dir = mk_directory + "/data"
             fig_dir = mk_directory + "/fig"
+            api_dir = mk_directory + "/api"
             res_json = data_dir + "/response.json"
             his_json = data_dir + "/history.json"
             word_json = data_dir + "/words.json"
+            api_key = api_dir + "/apikey"
             subprocess.call(["mkdir", mk_directory])
             subprocess.call(["mkdir", data_dir])
             subprocess.call(["mkdir", fig_dir])
+            subprocess.call(["mkdir", api_dir])
             subprocess.call(["touch", res_json])
             subprocess.call(["touch", his_json])
             subprocess.call(["touch", word_json])
+            subprocess.call(["touch", api_key])
             json_write(res_json, {})
             json_write(his_json, {})
             init = HistoryWrite()
@@ -83,6 +104,37 @@ class SampleFrame(wx.Frame):
     def history(self, event):
         #subprocess.Popen(["python3", "history.py"])
         history.main()
+
+    def apikey(self, event):
+        if self.flag:
+            self.ctrl_apikey.Show()
+            self.btn_save.Show()
+            self.flag = False
+        else:
+            self.ctrl_apikey.Hide()
+            self.btn_save.Hide()
+            self.flag = True
+        self.Layout()
+
+    def save(self, event):
+        dlg = wx.MessageDialog(self, "APIキーを更新しますか？", "確認", wx.YES_NO | wx.ICON_QUESTION)
+        if dlg.ShowModal() == wx.ID_YES:
+            with open(path("apikey", "api"), "w") as f:
+                f.write(self.ctrl_apikey.GetValue().strip())
+            self.ctrl_apikey.Clear()
+        else:
+            dlg.Destroy()
+        self.ctrl_apikey.Hide()
+        self.btn_save.Hide()
+        
+
+    # xボタン押下時の処理
+    def onExit(self, event):
+        dlg = wx.MessageDialog(self, "プログラムを終了しますか？", "確認", wx.YES_NO | wx.ICON_QUESTION)
+        if dlg.ShowModal() == wx.ID_YES:
+            self.Destroy()  # ウィンドウを破棄してプログラムを終了
+        else:
+            dlg.Destroy()
 
 # アプリケーションクラス
 class SampleApp(wx.App):

@@ -40,5 +40,3 @@ def main():
     fig_path = path("fig.html", "fig")
     fig.write_html(fig_path)
     subprocess.call(["open", fig_path])
-
-main()

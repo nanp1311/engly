@@ -1,4 +1,4 @@
-# Enly
+# untitled
 ## 概要
 - 英語学習支援アプリケーション
 - 実行ファイルはanly/anly, jsonファイルはanly/dataに存在している
@@ -9,12 +9,15 @@
 - newdateにHistoryWriteクラスを実装
 - クラスを使用する際は必ずインスタンスを生成する(init = HistoryWrite()みたいな感じ)
 - titleの__setup_dataにディレクトリ存在判定を追加
+- api/apikeyを.ll_dataに作成
+- apiキーはapikeyファイルから読みだすように変更
+- apiキーを保存する機能をtitleに追加
 
 ## 1204
 - 各種プログラムの呼び出しをdef main()に変更
-- jsonファイルの管理を.enly_data(仮)に変更
-- pathで返すパスをホーム直下.enly_dataに変更
-- ホーム直下に.enly_data(仮)を作成するプログラムを実装
+- jsonファイルの管理を.ll_data(仮)に変更
+- pathで返すパスをホーム直下.ll_dataに変更
+- ホーム直下に.ll_data(仮)を作成するプログラムを実装
 ```ファイル構造
 ├── data
 │   ├── history.json
