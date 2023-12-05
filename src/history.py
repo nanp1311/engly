@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import webbrowser
 import plotly.graph_objects as go
 import subprocess
 import plotly.graph_objs as go
@@ -39,4 +40,7 @@ def main():
     # グラフをhtml化
     fig_path = path("fig.html", "fig")
     fig.write_html(fig_path)
-    subprocess.call(["open", fig_path])
+    try:
+        subprocess.call(["open", fig_path])
+    except:
+        webbrowser.open_new_tab(fig_path)

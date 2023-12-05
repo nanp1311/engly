@@ -62,23 +62,25 @@ class SampleFrame(wx.Frame):
 
     def __data_setup(self):
         if not os.path.exists(self.home_directory + "/.ll_data"):
-            home_directory = expanduser("~")
-            mk_directory = home_directory + "/.ll_data"
-            data_dir = mk_directory + "/data"
-            fig_dir = mk_directory + "/fig"
-            api_dir = mk_directory + "/api"
+            home_dir = expanduser("~")
+            data_dir = home_dir + "/.ll_data/data"
+            fig_dir = home_dir + "/.ll_data/fig"
+            api_dir = home_dir + "/.ll_data/api"
             res_json = data_dir + "/response.json"
             his_json = data_dir + "/history.json"
             word_json = data_dir + "/words.json"
             api_key = api_dir + "/apikey"
-            subprocess.call(["mkdir", mk_directory])
-            subprocess.call(["mkdir", data_dir])
-            subprocess.call(["mkdir", fig_dir])
-            subprocess.call(["mkdir", api_dir])
-            subprocess.call(["touch", res_json])
-            subprocess.call(["touch", his_json])
-            subprocess.call(["touch", word_json])
-            subprocess.call(["touch", api_key])
+            os.makedirs(data_dir)
+            os.makedirs(fig_dir)
+            os.makedirs(api_dir)
+            with open(res_json, "w") as f:
+                pass
+            with open(his_json, "w") as f:
+                pass
+            with open(word_json, "w") as f:
+                pass
+            with open(api_key, "w") as f:
+                pass
             json_write(res_json, {})
             json_write(his_json, {})
             init = HistoryWrite()
@@ -148,7 +150,7 @@ def main():
     app = SampleApp()
     app.MainLoop()
 
-#main()
+main()
 
 # メイン
 '''

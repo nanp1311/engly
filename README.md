@@ -2,7 +2,11 @@
 ## 概要
 - 英語学習支援アプリケーション
 - jsonファイルは~/.ll_dataに存在している
+- testPyPIに公開
 - python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps nanpapp2
+- windowsでも動いた
+- 必要なパッケージの処理をどうするのかがわからない
+- LICENSE合ってるかわからない
 
 ## 1205
 - titleで作成した各種ファイルを初期化するプログラムを実装
@@ -15,8 +19,9 @@
 - apiキーを保存する機能をtitleに追加
 - tomlファイルを作成
 - ソース配布の.tar.gzとビルド配布の.whl -> 要検索
-- testPyPIに公開
-- LICENSE合ってるかわからない
+- ディレクトリ作成をmkdirからos.makedirsに変更
+- ファイル作成をwith openで行うように変更
+- fig.htmlをwebbrowserで開くように変更
 
 ## 1204
 - 各種プログラムの呼び出しをdef main()に変更
