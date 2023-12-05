@@ -15,14 +15,14 @@
 - jsonファイルの管理を.anly_data(仮)に変更
 - pathで返すパスをホーム直下.anly_dataに変更
 - ホーム直下に.anly_data(仮)を作成するプログラムを実装
-'''ファイル構造
+```ファイル構造
 ├── data
 │   ├── history.json
 │   ├── response.json
 │   └── words.json
 └── fig
     └── fig.html
-'''
+```
 
 ## 1201
 - モジュールapikey.pyを作成
