@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import wx
 import openai
-from libs.apikey import APIKEY
+#from libs.apikey import APIKEY
 from libs.common import json_open, json_write, path, set_font, add_word
 
 class SampleFrame(wx.Frame):
@@ -69,8 +69,6 @@ class SampleFrame(wx.Frame):
         with open(path("apikey", "api"), "r") as f:
             key = f.read()
         openai.api_key = key
-        print(key)
-        print(APIKEY)
 
     # ボタン押したときの処理
     def push_word(self, event):
