@@ -13,5 +13,4 @@ src/nanpapp2.egg-info/PKG-INFO
 src/nanpapp2.egg-info/SOURCES.txt
 src/nanpapp2.egg-info/dependency_links.txt
 src/nanpapp2.egg-info/entry_points.txt
-src/nanpapp2.egg-info/requires.txt
 src/nanpapp2.egg-info/top_level.txt

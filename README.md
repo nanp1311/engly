@@ -3,10 +3,25 @@
 - 英語学習支援アプリケーション
 - jsonファイルは~/.ll_dataに存在している
 - testPyPIに公開
+- python3 -m build
+- python3 -m twine upload --repository testpypi dist/*
 - python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps nanpapp2
 - windowsでも動いた
 - 必要なパッケージの処理をどうするのかがわからない
 - LICENSE合ってるかわからない
+
+```
+dependencies = [
+    "openai ~= 0.28",
+    "wxPython ~= 4.2.1",
+    "plotly ~= 5.16.1"
+]
+```
+
+## 正式リリースまでの課題
+- ライブラリ(openai, wx, plotly)がないパソコンの場合どうするか
+- LICENSEの整理
+- README.mdの整理
 
 ## 1205
 - titleで作成した各種ファイルを初期化するプログラムを実装
@@ -21,7 +36,7 @@
 - ソース配布の.tar.gzとビルド配布の.whl -> 要検索
 - ディレクトリ作成をmkdirからos.makedirsに変更
 - ファイル作成をwith openで行うように変更
-- fig.htmlをwebbrowserで開くように変更
+- fig.htmlをtry文を用いてwebbrowserかsubprocessで開くように変更
 
 ## 1204
 - 各種プログラムの呼び出しをdef main()に変更
