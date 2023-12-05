@@ -1,7 +1,0 @@
-README.md
-setup.py
-anly.egg-info/PKG-INFO
-anly.egg-info/SOURCES.txt
-anly.egg-info/dependency_links.txt
-anly.egg-info/entry_points.txt
-anly.egg-info/top_level.txt
