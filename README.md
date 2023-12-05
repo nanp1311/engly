@@ -12,9 +12,9 @@
 
 ## 1204
 - 各種プログラムの呼び出しをdef main()に変更
-- jsonファイルの管理を.anly_data(仮)に変更
-- pathで返すパスをホーム直下.anly_dataに変更
-- ホーム直下に.anly_data(仮)を作成するプログラムを実装
+- jsonファイルの管理を.enly_data(仮)に変更
+- pathで返すパスをホーム直下.enly_dataに変更
+- ホーム直下に.enly_data(仮)を作成するプログラムを実装
 ```ファイル構造
 ├── data
 │   ├── history.json
