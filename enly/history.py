@@ -41,4 +41,4 @@ def main():
     fig.write_html(fig_path)
     subprocess.call(["open", fig_path])
 
-#main()
+main()
