@@ -16,6 +16,8 @@ dependencies = [
     "wxPython ~= 4.2.1",
     "plotly ~= 5.16.1"
 ]
+
+numpy = { version = "1.21.2", python = "^3.8" }
 ```
 
 ## 正式リリースまでの課題
