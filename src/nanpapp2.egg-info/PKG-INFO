@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: nanpapp2
-Version: 1.0.7
+Version: 1.0.8
 Summary: English Learning Application
 Author-email: nanp1311 <pengin.na11@gmail.com>
 Project-URL: Homepage, https://github.com/nanp1311/untitled
@@ -30,6 +30,8 @@ dependencies = [
     "wxPython ~= 4.2.1",
     "plotly ~= 5.16.1"
 ]
+
+numpy = { version = "1.21.2", python = "^3.8" }
 ```
 
 ## 正式リリースまでの課題
