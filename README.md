@@ -8,6 +8,7 @@
 - python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps nanpapp2
 - windowsでも動いた
 - 必要なパッケージの処理をどうするのかがわからない
+- tar.gzと.whlがなにかわからない(ソースとビルド済？)
 - LICENSE合ってるかわからない
 
 ```
