@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: nanpapp2
-Version: 1.0.9
+Version: 1.0.10
 Summary: English Learning Application
 Author-email: nanp1311 <pengin.na11@gmail.com>
 Project-URL: Homepage, https://github.com/nanp1311/untitled
@@ -21,7 +21,8 @@ License-File: LICENSE
 - python3 -m twine upload --repository testpypi dist/*
 - python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps nanpapp2
 - windowsでも動いた
-- 必要なパッケージの処理をどうするのかがわからない
+- 必要なパッケージの処理をどうするのかがわからない、自動で追加
+- tar.gzと.whlがなにかわからない(ソースとビルド済？)
 - LICENSE合ってるかわからない
 
 ```
@@ -38,6 +39,18 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - ライブラリ(openai, wx, plotly)がないパソコンの場合どうするか
 - LICENSEの整理
 - README.mdの整理
+- 単語の削除、編集
+- ChatGPTの履歴確認
+- 単語が複数の意味を持つ場合の処理
+
+## 1206
+- 英語のテキスト5冊を来週までに
+- 来週までに人がアプリを使えるように
+- 12/13から一ヶ月間を使ってアプリの効果を計る
+- まず適当なテキストを選ぶ
+- 何もせずに問題を解く
+- 1ヶ月間アプリを使って勉強する
+- 1ヶ月後もう一度テストを解いて結果を記録する
 
 ## 1205
 - titleで作成した各種ファイルを初期化するプログラムを実装
