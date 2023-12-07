@@ -3,20 +3,27 @@
 - 英語学習支援アプリケーション
 - jsonファイルは~/.ll_dataに存在している
 - testPyPIに公開
-- python3 -m build
-- python3 -m twine upload --repository testpypi dist/*
-- python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps nanpapp2
 - windowsでも動いた
 - 必要なパッケージの処理をどうするのかがわからない、自動で追加
 - tar.gzと.whlがなにかわからない(ソースとビルド済？)
 - LICENSE合ってるかわからない
 
+## TestPyPI
+- python3 -m build
+- python3 -m twine upload --repository testpypi dist/*
+- python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps nanpapp2
+
+## PyPI
+- python3 -m build
+- python3 -m twine upload dist/*
+- python3 -m pip install nanpapp2
+
 ```
-dependencies = [
-    "openai ~= 0.28",
-    "wxPython ~= 4.2.1",
-    "plotly ~= 5.16.1"
-]
+[tool.poetry.dependencies]
+python = "^3.8"
+openai = "0.28"
+wxPython = "4.2.1"
+plotly = "5.16.1"
 
 numpy = { version = "1.21.2", python = "^3.8" }
 ```
@@ -27,11 +34,8 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - ChatGPTの履歴確認
 - 単語が複数の意味を持つ場合の処理
 - 品詞も出す
-<<<<<<< HEAD
 - LICENSEの整理
 - README.mdの整理
-=======
->>>>>>> 28bd1a30cb4f68f786c63e5294b2a0488b3a4f8e
 - TOEIC公式問題集
 
 ## 1206

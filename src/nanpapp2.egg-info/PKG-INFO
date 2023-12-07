@@ -1,10 +1,6 @@
 Metadata-Version: 2.1
 Name: nanpapp2
-<<<<<<< HEAD
-Version: 1.0.11
-=======
-Version: 1.0.10
->>>>>>> 28bd1a30cb4f68f786c63e5294b2a0488b3a4f8e
+Version: 1.0.1
 Summary: English Learning Application
 Author-email: nanp1311 <pengin.na11@gmail.com>
 Project-URL: Homepage, https://github.com/nanp1311/untitled
@@ -15,6 +11,9 @@ Classifier: Operating System :: OS Independent
 Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: openai~=0.28
+Requires-Dist: wxPython~=4.2.1
+Requires-Dist: plotly~=5.16.1
 
 # nanpapp
 ## 概要
@@ -30,11 +29,11 @@ License-File: LICENSE
 - LICENSE合ってるかわからない
 
 ```
-dependencies = [
-    "openai ~= 0.28",
-    "wxPython ~= 4.2.1",
-    "plotly ~= 5.16.1"
-]
+[tool.poetry.dependencies]
+python = "^3.8"
+openai = "0.28"
+wxPython = "4.2.1"
+plotly = "5.16.1"
 
 numpy = { version = "1.21.2", python = "^3.8" }
 ```
@@ -47,13 +46,7 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - 品詞も出す
 - LICENSEの整理
 - README.mdの整理
-<<<<<<< HEAD
 - TOEIC公式問題集
-=======
-- 単語の削除、編集
-- ChatGPTの履歴確認
-- 単語が複数の意味を持つ場合の処理
->>>>>>> 28bd1a30cb4f68f786c63e5294b2a0488b3a4f8e
 
 ## 1206
 - 英語のテキスト5冊を来週までに

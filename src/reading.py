@@ -67,8 +67,13 @@ class SampleFrame(wx.Frame):
 
     def __set_apikey(self):
         with open(path("apikey", "api"), "r") as f:
-            key = f.read()
-        openai.api_key = key
+            key = f.read().strip()
+        if key != "":
+            openai.api_key = key
+        else:
+            error = wx.MessageDialog(self, "APIキーが登録されていません。", "エラー", wx.ICON_ERROR | wx.OK)
+            error.ShowModal()
+            self.Destroy()
 
     # ボタン押したときの処理
     def push_word(self, event):
