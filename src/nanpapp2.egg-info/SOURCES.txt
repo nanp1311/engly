@@ -1,6 +1,8 @@
 LICENSE
+MANIFEST.in
 README.md
 pyproject.toml
+requirements.txt
 src/history.py
 src/reading.py
 src/title.py

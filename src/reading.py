@@ -16,7 +16,7 @@ class SampleFrame(wx.Frame):
         # カウントのための変数
         self.count = 0
         # 必要なやつ
-        self.Bind(wx.EVT_CLOSE, self.onExit)
+        #self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__create_widget()
         self.__do_layout()
         self.__set_apikey()
@@ -81,7 +81,8 @@ class SampleFrame(wx.Frame):
         if flag:
             sys = "あなたは英語が得意なアシスタントです。"
             assi = "英単語の意味を日本語で簡潔に回答します。"
-            usr = self.input_words + "この英文に出てくる単語や熟語の意味をword: meaningという形で表示してください。"
+            usr = self.input_words + "この英文に出てくる単語や熟語の意味をword: meaningという形で日本語で表示してください。"
+            # 単語の場合は品詞も共に日本語で表示してください。
             response = self.api_response(sys, assi, usr)
             # ChatGPTの返答をjsonファイルに保存
             self.write_response("Word", self.input_words, response)

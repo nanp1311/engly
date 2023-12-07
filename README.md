@@ -23,11 +23,13 @@ numpy = { version = "1.21.2", python = "^3.8" }
 
 ## 正式リリースまでの課題
 - ライブラリ(openai, wx, plotly)がないパソコンの場合どうするか
-- LICENSEの整理
-- README.mdの整理
 - 単語の削除、編集
 - ChatGPTの履歴確認
 - 単語が複数の意味を持つ場合の処理
+- 品詞も出す
+- LICENSEの整理
+- README.mdの整理
+- TOEIC公式問題集
 
 ## 1206
 - 英語のテキスト5冊を来週までに

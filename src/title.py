@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import os
 import wx
-import subprocess
+import json
 from os.path import expanduser
 from libs.common import json_write, set_font, path
 from libs.newdate import HistoryWrite
@@ -15,7 +15,7 @@ class SampleFrame(wx.Frame):
         wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(450, 550))
         self.home_directory = expanduser("~")
         self.flag = True
-        self.Bind(wx.EVT_CLOSE, self.onExit)
+        #self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__create_widget()
         self.__do_layout()
         self.__data_setup()
@@ -73,19 +73,16 @@ class SampleFrame(wx.Frame):
             os.makedirs(data_dir)
             os.makedirs(fig_dir)
             os.makedirs(api_dir)
-            with open(res_json, "w") as f:
+            with open(res_json, "w") as file:
+                json.dump({}, file, indent=2)
+            with open(his_json, "w") as file:
+                json.dump({}, file, indent=2)
+            with open(word_json, "w") as file:
+                json.dump({}, file, indent=2)
+            with open(api_key, "w") as file:
                 pass
-            with open(his_json, "w") as f:
-                pass
-            with open(word_json, "w") as f:
-                pass
-            with open(api_key, "w") as f:
-                pass
-            json_write(res_json, {})
-            json_write(his_json, {})
             init = HistoryWrite()
             init.history_init()
-            json_write(word_json, {})
         else:
             pass
 
@@ -129,7 +126,6 @@ class SampleFrame(wx.Frame):
         self.ctrl_apikey.Hide()
         self.btn_save.Hide()
         
-
     # xボタン押下時の処理
     def onExit(self, event):
         dlg = wx.MessageDialog(self, "プログラムを終了しますか？", "確認", wx.YES_NO | wx.ICON_QUESTION)

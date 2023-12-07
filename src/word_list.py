@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import wx
-from libs.common import json_open, path, set_font, add_word
+from libs.common import json_open, json_write, path, set_font, add_word
 
 class MyFrame(wx.Frame):
     def __init__(self, parent, ID, title):
@@ -9,7 +9,7 @@ class MyFrame(wx.Frame):
         # words.jsonのパス
         self.filename = path("words.json")
         # おまじない
-        self.Bind(wx.EVT_CLOSE, self.onExit)
+        #self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__set_word()
         self.__create_widget()
         self.__do_layout()
@@ -31,6 +31,11 @@ class MyFrame(wx.Frame):
         # 選択した英単語の意味を表示するボタン
         self.btn_show = wx.Button(self, -1, "show")
         self.btn_show.Bind(wx.EVT_BUTTON, self.push_show)
+
+        # 選択した英単語を削除するボタン
+        self.btn_delete = wx.Button(self, -1, "delete")
+        self.btn_delete.Bind(wx.EVT_BUTTON, self.push_delete)
+        self.btn_delete.Disable()
 
         # 英単語の意味を表示するテキスト
         self.txt_meaning = wx.StaticText(self, -1, "", style=wx.TE_CENTER)
@@ -68,6 +73,7 @@ class MyFrame(wx.Frame):
         sizer_wl = wx.BoxSizer(wx.HORIZONTAL)
         sizer_wl.Add(self.combobox, flag=wx.ALIGN_CENTER | wx.TOP, border=10)
         sizer_wl.Add(self.btn_show, flag=wx.ALIGN_CENTER | wx.LEFT | wx.TOP, border=10)
+        sizer_wl.Add(self.btn_delete, flag=wx.ALIGN_CENTER | wx.LEFT | wx.TOP, border=10)
         sizer_all.Add(sizer_wl, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=20)
         
         # 意味を表示するテキストの配置
@@ -97,20 +103,35 @@ class MyFrame(wx.Frame):
 
     # showボタン押下時の処理
     def push_show(self, event):
-        select_word = self.combobox.GetValue()
+        self.select_word = self.combobox.GetValue()
         # 存在しない単語が入力された時のエラー表示
-        if self.meaninglist.get(select_word) is None:
+        if self.meaninglist.get(self.select_word) is None:
             self.txt_meaning.SetLabel("Unregistered word")
             self.txt_meaning.SetForegroundColour('#FF0000')
         else: # 文字数によってフォントサイズを変更する
-            if len(self.meaninglist[select_word]) > 30:
+            if len(self.meaninglist[self.select_word]) > 30:
                 self.txt_meaning.SetFont(set_font(20))
             else:
                 self.txt_meaning.SetFont(set_font(25))
             # 意味の表示
-            self.txt_meaning.SetLabel(self.meaninglist[select_word])
+            self.txt_meaning.SetLabel(self.meaninglist[self.select_word])
             self.txt_meaning.SetForegroundColour('#000000')
+        self.btn_delete.Enable()
         # レイアウト整理
+        self.Layout()
+
+    # deleteボタン押下時の処理
+    def push_delete(self, event):
+        json_data = json_open(self.filename)
+        if self.select_word in json_data:
+            del json_data[self.select_word]
+        json_write(self.filename, json_data)
+        self.combobox.SetStringSelection(self.select_word)
+        self.combobox.Delete(self.combobox.GetSelection())
+        self.combobox.SetValue('')
+        self.txt_meaning.SetLabel("Deleted " + self.select_word)
+        self.txt_meaning.SetForegroundColour('#0000FF')
+        self.btn_delete.Disable()
         self.Layout()
 
     # addボタン押下時の処理
