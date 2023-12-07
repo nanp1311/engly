@@ -27,8 +27,11 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - ChatGPTの履歴確認
 - 単語が複数の意味を持つ場合の処理
 - 品詞も出す
+<<<<<<< HEAD
 - LICENSEの整理
 - README.mdの整理
+=======
+>>>>>>> 28bd1a30cb4f68f786c63e5294b2a0488b3a4f8e
 - TOEIC公式問題集
 
 ## 1206
