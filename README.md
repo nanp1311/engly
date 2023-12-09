@@ -24,4 +24,4 @@
 ## ライセンス
 - MITライセンス
 ## 連絡先
-- pengin.na11@gmail.com
+- None
