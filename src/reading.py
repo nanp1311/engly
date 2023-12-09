@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import wx
 import openai
-#from libs.apikey import APIKEY
 from libs.common import json_open, json_write, path, set_font, add_word
 
 class SampleFrame(wx.Frame):

@@ -3,7 +3,7 @@ import os
 import wx
 import json
 from os.path import expanduser
-from libs.common import json_write, set_font, path
+from libs.common import set_font, path
 from libs.newdate import HistoryWrite
 import word_list
 import word_test
@@ -61,11 +61,11 @@ class SampleFrame(wx.Frame):
         self.SetSizer(sizer)
 
     def __data_setup(self):
-        if not os.path.exists(self.home_directory + "/.ll_data"):
+        if not os.path.exists(self.home_directory + "/.engly_data"):
             home_dir = expanduser("~")
-            data_dir = home_dir + "/.ll_data/data"
-            fig_dir = home_dir + "/.ll_data/fig"
-            api_dir = home_dir + "/.ll_data/api"
+            data_dir = home_dir + "/.engly_data/data"
+            fig_dir = home_dir + "/.engly_data/fig"
+            api_dir = home_dir + "/.engly_data/api"
             res_json = data_dir + "/response.json"
             his_json = data_dir + "/history.json"
             word_json = data_dir + "/words.json"

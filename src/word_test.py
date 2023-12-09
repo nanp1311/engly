@@ -5,10 +5,6 @@ import textwrap
 from libs.common import json_open, json_write, path, set_font
 from libs.newdate import HistoryWrite
 
-# 色の初期値? -> #AFAFAF
-# 多用する関数(jsonファイルの読み込みとか)は別ファイルに纏めたい
-# システムとUIのプログラムを分けるのが理想？
-
 # メインフレームクラス
 class SampleFrame(wx.Frame):
     def __init__(self, parent, ID, title):

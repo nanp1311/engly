@@ -1,7 +1,7 @@
-# nanpapp
+# engly
 ## 概要
 - 英語学習支援アプリケーション
-- jsonファイルは~/.ll_dataに存在している
+- jsonファイルは~/.engly_dataに存在している
 - testPyPIに公開
 - windowsでも動いた
 - 必要なパッケージの処理をどうするのかがわからない、自動で追加
@@ -14,12 +14,12 @@
 ## TestPyPI
 - python3 -m build
 - python3 -m twine upload --repository testpypi dist/*
-- python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps nanpapp2
+- python3 -m pip install --index-url https://test.pypi.org/simple/ --no-deps engly
 
 ## PyPI
 - python3 -m build
 - python3 -m twine upload dist/*
-- python3 -m pip install nanpapp2
+- python3 -m pip install engly
 
 ```
 [tool.poetry.dependencies]
@@ -38,6 +38,13 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - LICENSEの整理
 - README.mdの整理
 - TOEIC公式問題集
+
+## アプリ名
+- word, list, reading, english, learning, study, assist, support, comprehension, analyze, language
+
+## 1209
+- README.md整理、アプリ仕様やインストール方法などを記述
+- MANIFEST.inにREADME.md, LICENSEを追加、MEMO.mdを除外する記述を追加
 
 ## 1207
 - 単語リストに単語削除機能追加

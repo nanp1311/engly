@@ -4,7 +4,6 @@ from libs.common import json_open, json_write, path, set_font, add_word
 
 class MyFrame(wx.Frame):
     def __init__(self, parent, ID, title):
-        # わからん
         wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 400))
         # words.jsonのパス
         self.filename = path("words.json")

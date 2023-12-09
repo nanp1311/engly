@@ -16,7 +16,7 @@ def json_write(filename, json_data):
 # ファイルのパスを返す
 def path(filename, dir="data"):
     home = expanduser("~")
-    return home + "/.ll_data/" + dir + "/" + filename # 返すのはこの関数を実行したファイルが存在するパス
+    return home + "/.engly_data/" + dir + "/" + filename # 返すのはこの関数を実行したファイルが存在するパス
 # 指定したサイズのフォントを返す
 def set_font(i):
     return wx.Font(i, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
