@@ -36,6 +36,8 @@ def main():
     fig.update_layout(title='学んだ単語の数',
                     xaxis_title='日付',
                     yaxis_title='単語数')
+    
+    fig.update_yaxes(range=(0, value["total"]+10))
 
     # グラフをhtml化
     fig_path = path("fig.html", "fig")
