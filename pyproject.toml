@@ -1,5 +1,5 @@
 [project]
-name = "nanpapp2"
+name = "engly"
 version = "0.0.1"
 authors = [
   { name="nanp1311", email="pengin.na11@gmail.com" },
@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.scripts]
-nanpapp2 = "title:main"
+engly = "title:main"
 
 [project.urls]
 "Homepage" = "https://github.com/nanp1311/untitled"
