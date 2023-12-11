@@ -22,12 +22,13 @@ def set_font(i):
     return wx.Font(i, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
 
 # jsonファイルに単語と意味を追加する
-def add_word(word, meaning, filename):
+def add_word(word, meaning, key, filename):
     json_data = json_open(filename)
     new_word = {
+                "word": word,
                 "meaning": meaning,
                 "correct": 0,
                 "incorrect": 0
                 }
-    json_data[word] = new_word
+    json_data[key] = new_word
     json_write(filename, json_data)

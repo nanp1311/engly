@@ -7,26 +7,20 @@ class MyFrame(wx.Frame):
         wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 400))
         # words.jsonのパス
         self.filename = path("words.json")
+        # 変数の初期化
+        self.select_word = ""
+        self.tmpword = " " # 空白1つ
         # おまじない
         #self.Bind(wx.EVT_CLOSE, self.onExit)
-        self.__set_word()
         self.__create_widget()
         self.__do_layout()
+        self.__set_word()
+        #self.__set_combo()
         self.Show()
-
-    # # 単語リストと辞書型の意味リストを作成
-    def __set_word(self):
-        self.wordlist = [""]
-        self.meaninglist = {}
-        # jsonファイルの読み込み
-        json_data = json_open(self.filename)
-        for key, value in json_data.items():
-            self.wordlist.append(key)
-            self.meaninglist[key] = value["meaning"]
 
     def __create_widget(self):
         # コンボボックス
-        self.combobox = wx.ComboBox(self, choices=self.wordlist, style=wx.CB_DROPDOWN | wx.CB_SORT)
+        self.combobox = wx.ComboBox(self, style=wx.CB_DROPDOWN | wx.CB_SORT)
         # 選択した英単語の意味を表示するボタン
         self.btn_show = wx.Button(self, -1, "show")
         self.btn_show.Bind(wx.EVT_BUTTON, self.push_show)
@@ -100,52 +94,101 @@ class MyFrame(wx.Frame):
         # 配置の確定？
         self.SetSizer(sizer_all)
 
+    # 単語リストと辞書型の意味リストを作成
+    def __set_word(self):
+        self.wordlist = [""]
+        self.keylist ={"":""}
+        self.meaninglist = {"": "Please enter a word"}
+        # jsonファイルの読み込み
+        json_data = json_open(self.filename)
+        for key, value in json_data.items():
+            self.wordlist.append(value["word"])
+            self.keylist[key] = value["word"]
+            self.meaninglist[key] = value["meaning"]
+        self.wordlist = list(set(self.wordlist)) # 重複の削除
+        for word in self.wordlist:
+            self.combobox.Append(word)
+
     # showボタン押下時の処理
     def push_show(self, event):
-        self.select_word = self.combobox.GetValue()
+        self.select_word = self.combobox.GetValue().strip()
+        # 単語の意味を全てmultilistに格納
+        if self.select_word != self.tmpword:
+            self.multilist = []
+            for key, value in self.keylist.items():
+                if value == self.select_word:
+                    self.multilist.append(key)
+            self.multi = len(self.multilist)-1
+            self.tmpword = self.select_word
         # 存在しない単語が入力された時のエラー表示
-        if self.meaninglist.get(self.select_word) is None:
-            self.txt_meaning.SetLabel("Unregistered word")
-            self.txt_meaning.SetForegroundColour('#FF0000')
-        else: # 文字数によってフォントサイズを変更する
-            if len(self.meaninglist[self.select_word]) > 30:
+        try:
+            if len(self.meaninglist[self.multilist[self.multi]]) > 30:
                 self.txt_meaning.SetFont(set_font(20))
             else:
                 self.txt_meaning.SetFont(set_font(25))
             # 意味の表示
-            self.txt_meaning.SetLabel(self.meaninglist[self.select_word])
+            self.txt_meaning.SetLabel(self.meaninglist[self.multilist[self.multi]])
             self.txt_meaning.SetForegroundColour('#000000')
-        self.btn_delete.Enable()
+            self.show_key = self.multilist[self.multi]      
+            # 意味の表示
+            self.txt_meaning.SetLabel(self.meaninglist[self.multilist[self.multi]])
+            self.txt_meaning.SetForegroundColour('#000000')
+            # 意味の更新のための番号
+            self.multi -= 1
+            if self.multi < 0:
+                self.multi = len(self.multilist)-1
+            if self.show_key != "":
+                self.btn_delete.Enable()
+            else:
+                self.btn_delete.Disable()
+        except:
+            self.txt_meaning.SetLabel("Unregistered word")
+            self.txt_meaning.SetForegroundColour('#FF0000')
         # レイアウト整理
         self.Layout()
 
     # deleteボタン押下時の処理
     def push_delete(self, event):
         json_data = json_open(self.filename)
-        if self.select_word in json_data:
-            del json_data[self.select_word]
+        if self.show_key in json_data:
+            del json_data[self.show_key]
         json_write(self.filename, json_data)
-        self.combobox.SetStringSelection(self.select_word)
-        self.combobox.Delete(self.combobox.GetSelection())
-        self.combobox.SetValue('')
-        self.txt_meaning.SetLabel("Deleted " + self.select_word)
+        self.multilist.remove(self.show_key)
+        self.multi = len(self.multilist)-1
+        if len(self.multilist) < 1:
+            self.combobox.SetStringSelection(self.select_word)
+            self.combobox.Delete(self.combobox.GetSelection())
+            self.combobox.SetValue('')
+        self.txt_meaning.SetLabel("Deleted " + self.select_word + ": " + self.meaninglist[self.show_key])
+        del self.keylist[self.show_key]
+        del self.meaninglist[self.show_key]
+        self.txt_meaning.SetFont(set_font(20))
         self.txt_meaning.SetForegroundColour('#0000FF')
         self.btn_delete.Disable()
         self.Layout()
 
     # addボタン押下時の処理
     def push_add(self, event):
+        json_data = json_open(self.filename)
         word = self.txtCtrl_word.GetValue().strip() #空白とか消す
         meaning = self.txtCtrl_meaning.GetValue().strip()
+        key = word
+        i = 2
         if word != "" and meaning != "": #テキストボックスが空白でなければ
             # 単語の追加
-            add_word(word, meaning, self.filename)
+            while key in json_data:
+                key = word + str(i)
+                i += 1
+            add_word(word, meaning, key, self.filename)
+            # 配列への追加
+            self.keylist[key] = word
+            self.meaninglist[key] = meaning
             # 成功時のメッセージ表示
             self.txt_success.SetForegroundColour('#0000FF')
             self.txt_success.SetLabel( "\"" + word + "\" " + "added.")
             # 単語をコンボボックスに追加、意味を紐づける
-            self.combobox.Append(self.txtCtrl_word.GetValue())
-            self.meaninglist[self.txtCtrl_word.GetValue()] = meaning
+            if not word in self.combobox.GetItems():
+                self.combobox.Append(word)
             # テキストボックスを空にする
             self.txtCtrl_word.Clear()
             self.txtCtrl_meaning.Clear()
