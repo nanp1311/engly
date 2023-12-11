@@ -129,10 +129,7 @@ class MyFrame(wx.Frame):
             # 意味の表示
             self.txt_meaning.SetLabel(self.meaninglist[self.multilist[self.multi]])
             self.txt_meaning.SetForegroundColour('#000000')
-            self.show_key = self.multilist[self.multi]      
-            # 意味の表示
-            self.txt_meaning.SetLabel(self.meaninglist[self.multilist[self.multi]])
-            self.txt_meaning.SetForegroundColour('#000000')
+            self.show_key = self.multilist[self.multi]
             # 意味の更新のための番号
             self.multi -= 1
             if self.multi < 0:
