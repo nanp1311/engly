@@ -3,7 +3,7 @@ import os
 import wx
 import json
 from os.path import expanduser
-from libs.common import set_font, path
+from libs.common import json_open, set_font, path
 from libs.newdate import HistoryWrite
 import word_list
 import word_test
@@ -94,11 +94,22 @@ class SampleFrame(wx.Frame):
 
     def test(self, event):
         #subprocess.Popen(["python3", "word_test.py"])
-        word_test.main()
+        json_data = json_open(path("words.json"))
+        if len(json_data) < 4: # words.jsonのデータが4つ未満なら
+            error = wx.MessageDialog(self, "単語を4つ以上登録してください.", "エラー", wx.ICON_ERROR | wx.OK)
+            error.ShowModal()
+        else:
+            word_test.main()
 
     def reading(self, event):
         #subprocess.Popen(["python3", "reading.py"])
-        reading.main()
+        with open(path("apikey", "api"), "r") as f:
+            key = f.read().strip()
+        if key == "": # APIキーが入力されていなければ
+            error = wx.MessageDialog(self, "APIキーが登録されていません。", "エラー", wx.ICON_ERROR | wx.OK)
+            error.ShowModal()
+        else:
+            reading.main()
 
     def history(self, event):
         #subprocess.Popen(["python3", "history.py"])
@@ -146,7 +157,7 @@ def main():
     app = SampleApp()
     app.MainLoop()
 
-#main()
+main()
 
 # メイン
 '''

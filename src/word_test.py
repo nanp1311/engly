@@ -99,7 +99,7 @@ class SampleFrame(wx.Frame):
 
     # 単語の用意と出題確率の操作
     def __set_word(self):
-        number = 0
+        #number = 0
         for key, value in self.words_data.items():
             # (間違えた回数/出題回数)*100 -> 間違えた割合(%)毎に出題回数を増やす
             # 0で割らないように+1
@@ -112,9 +112,11 @@ class SampleFrame(wx.Frame):
             else:
                 self.word_list.append(key)
             self.meaning_list[key] = value["meaning"]
+        '''
             number += 1
         if number < 4: # 登録済みの単語が4つ未満ならエラー
             self.errorExit("単語を4つ以上登録してください.")
+        '''
 
     # advanceボタンを押したときの動作
     def advance_push(self, event):
@@ -208,11 +210,13 @@ class SampleFrame(wx.Frame):
         finish.ShowModal()
         self.Destroy()
 
+'''
     # エラーによる強制終了
     def errorExit(self, txt):
         error = wx.MessageDialog(self, txt, "エラー", wx.ICON_ERROR | wx.OK)
         error.ShowModal()
         self.Destroy()
+'''
         
 
 # アプリケーションクラス

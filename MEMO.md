@@ -40,6 +40,13 @@ numpy = { version = "1.21.2", python = "^3.8" }
 ## アプリ名
 - word, list, reading, english, learning, study, assist, support, comprehension, analyze, language
 
+## 1212
+- Reading, testのエラー判定をtitleで行うように変更
+- ReadingのAPIキーが間違っていた時にエラーメッセージを表示するように変更
+
+## 1211
+- listに単語の意味を複数登録、表示できる機能を追加
+
 ## 1209
 - README.md整理、アプリ仕様やインストール方法などを記述
 - MANIFEST.inにREADME.md, LICENSEを追加、MEMO.mdを除外する記述を追加

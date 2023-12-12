@@ -66,13 +66,15 @@ class SampleFrame(wx.Frame):
 
     def __set_apikey(self):
         with open(path("apikey", "api"), "r") as f:
-            key = f.read().strip()
+            openai.api_key = f.read().strip()
+        '''
         if key != "":
             openai.api_key = key
         else:
             error = wx.MessageDialog(self, "APIキーが登録されていません。", "エラー", wx.ICON_ERROR | wx.OK)
             error.ShowModal()
             self.Destroy()
+        '''
 
     # ボタン押したときの処理
     def push_word(self, event):
@@ -88,20 +90,23 @@ class SampleFrame(wx.Frame):
             usr = self.input_words + "この英文に出てくる単語や熟語の意味をword: meaningという形で日本語で表示してください。"
             # 単語の場合は品詞も共に日本語で表示してください。
             response = self.api_response(sys, assi, usr)
-            # ChatGPTの返答をjsonファイルに保存
-            self.write_response("Word", self.input_words, response)
-            # 返答に含まれる単語と意味をボタン化
-            # 古いボタンを削除
-            for i in range(0, self.count):
-                exec("self.btn_{}.Destroy()".format(i))
-            all_word = response.replace("- ", "").split('\n') #前に書かれてる方から処理する
-            self.count = 0
-            for word in all_word:
-                if ": " in word:
-                    exec("self.btn_{} = wx.Button(self, label=word)".format(self.count))
-                    exec("self.btn_{}.Bind(wx.EVT_BUTTON, self.push_add)".format(self.count))
-                    exec("self.sizer_word.Add(self.btn_{}, flag=wx.ALIGN_LEFT | wx.TOP, border=10)".format(self.count))
-                    self.count += 1
+            if not response:
+                self.txt.SetLabel("APIキーが間違っています。")
+            else:
+                # ChatGPTの返答をjsonファイルに保存
+                self.write_response("Word", self.input_words, response)
+                # 返答に含まれる単語と意味をボタン化
+                # 古いボタンを削除
+                for i in range(0, self.count):
+                    exec("self.btn_{}.Destroy()".format(i))
+                all_word = response.replace("- ", "").split('\n') #前に書かれてる方から処理する
+                self.count = 0
+                for word in all_word:
+                    if ": " in word:
+                        exec("self.btn_{} = wx.Button(self, label=word)".format(self.count))
+                        exec("self.btn_{}.Bind(wx.EVT_BUTTON, self.push_add)".format(self.count))
+                        exec("self.sizer_word.Add(self.btn_{}, flag=wx.ALIGN_LEFT | wx.TOP, border=10)".format(self.count))
+                        self.count += 1
         self.Layout()
     
     def push_add(self, event):
@@ -126,25 +131,31 @@ class SampleFrame(wx.Frame):
             assi = "英文を丁寧に翻訳します。"
             usr = self.input_trans + "この英文の日本語訳を表示してください。それに加え、この英文の主語と動詞を英語で表示してください。"
             response = self.api_response(sys, assi, usr)
-            # ChatGPTの返答をjsonファイルに保存
-            self.write_response("Translation", self.input_trans, response)
-            # ChatGPTの返答を表示
-            self.txt.SetLabel(response)
+            if not response:
+                self.txt.SetLabel("APIキーが間違っています。")
+            else:
+                # ChatGPTの返答をjsonファイルに保存
+                self.write_response("Translation", self.input_trans, response)
+                # ChatGPTの返答を表示
+                self.txt.SetLabel(response)
         self.Layout()
 
     # ChatGPTに質問
     def api_response(self, system="", assistant="", user=""):
-        response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-                {"role": "system", "content": system},
-                {"role": "assistant", "content": assistant},
-                {"role": "user", "content": user}
-        ],
-        temperature=0,
-        top_p = 0
-        )
-        return response['choices'][0]['message']['content'].strip()
+        try:
+            response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                    {"role": "system", "content": system},
+                    {"role": "assistant", "content": assistant},
+                    {"role": "user", "content": user}
+            ],
+            temperature=0,
+            top_p = 0
+            )
+            return response['choices'][0]['message']['content'].strip()
+        except:
+            return False
 
     # ChatGPTの返答をjsonファイルに保存
     def write_response(self, tag, sentence, response):
