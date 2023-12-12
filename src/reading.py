@@ -5,7 +5,7 @@ from libs.common import json_open, json_write, path, set_font, add_word
 
 class SampleFrame(wx.Frame):
     def __init__(self, parent, ID, title):
-        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(1000, 800))
+        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 600))
         # テキストボックスの内容を入れる変数
         self.input_words = ""
         self.input_trans = ""

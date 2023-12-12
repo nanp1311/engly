@@ -8,7 +8,7 @@ from libs.newdate import HistoryWrite
 # メインフレームクラス
 class SampleFrame(wx.Frame):
     def __init__(self, parent, ID, title):
-        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(1000, 800))
+        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 600))
         # jsonファイルのパス
         self.words_file = path("words.json")
         self.history_file = path("history.json")
