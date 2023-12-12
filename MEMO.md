@@ -10,6 +10,9 @@
 - .local/binにinstallされる場合はsudo権限を使う -> uninstallにもsudoが必要になる
 - アプリ名考える -> dataディレクトリの名前変える
 - 複数単語の処理 -> comboboxの内部データに意味を格納する？
+- gcm notepad | fl
+- windowsだとreadingのレイアウトがおかしい -> スクロール関連の影響？
+- win: 0.0.3.6, linux: 0.0.3.7 (12/12現在)
 
 ## TestPyPI
 - python3 -m build
@@ -33,9 +36,8 @@ numpy = { version = "1.21.2", python = "^3.8" }
 
 ## 正式リリースまでの課題
 - ChatGPTの履歴確認
-- 単語が複数の意味を持つ場合の処理
 - 品詞も出す
-- TOEIC公式問題集
+- ウインドウの大きさの自動調節、初期位置指定
 
 ## アプリ名
 - word, list, reading, english, learning, study, assist, support, comprehension, analyze, language
@@ -43,6 +45,8 @@ numpy = { version = "1.21.2", python = "^3.8" }
 ## 1212
 - Reading, testのエラー判定をtitleで行うように変更
 - ReadingのAPIキーが間違っていた時にエラーメッセージを表示するように変更
+- Readingのウィンドウにスクロールを追加
+- Readnigのテキストボックスが空の際はChatGPTにアクセスしないように変更
 
 ## 1211
 - listに単語の意味を複数登録、表示できる機能を追加
@@ -124,3 +128,7 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - 英語に翻訳しやすい日本語(?)
 - 追加質問、指定 -> そういう枠も作る？(質問コーナー的な)
 - ここに入力したものが優先されている？一番効力がある感じがする
+
+## 例文
+Welcome to fish, the friendly interactive shell
+Type help for instructions on how to use fish
