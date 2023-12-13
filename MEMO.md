@@ -42,6 +42,9 @@ numpy = { version = "1.21.2", python = "^3.8" }
 ## アプリ名
 - word, list, reading, english, learning, study, assist, support, comprehension, analyze, language
 
+## 1213
+- 各ウィンドウの色を変更
+
 ## 1212
 - Reading, testのエラー判定をtitleで行うように変更
 - ReadingのAPIキーが間違っていた時にエラーメッセージを表示するように変更
@@ -130,5 +133,4 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - ここに入力したものが優先されている？一番効力がある感じがする
 
 ## 例文
-Welcome to fish, the friendly interactive shell
-Type help for instructions on how to use fish
+Before when we've had a fake implementation, it has been obvious how to work backward to the real implementation.

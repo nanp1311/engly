@@ -21,6 +21,8 @@ class SampleFrame(wx.Frame):
         self.__data_setup()
 
     def __create_widget(self):
+        self.SetBackgroundColour((224, 224, 224))
+
         self.txt = wx.StaticText(self, label = "Menu")
         self.txt.SetFont(set_font(40))
 

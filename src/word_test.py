@@ -35,6 +35,8 @@ class SampleFrame(wx.Frame):
 
     # Widgetを作成するメソッド
     def __create_widget(self):
+        self.SetBackgroundColour((224, 224, 224))
+
         # 問題文テキスト
         self.ques = wx.StaticText(self, label="Push the Start!", style=wx.TE_CENTER)
         self.ques.SetFont(set_font(40))
