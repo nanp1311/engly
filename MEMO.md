@@ -13,6 +13,10 @@
 - gcm notepad | fl
 - windowsだとreadingのレイアウトがおかしい -> スクロール関連の影響？
 - win: 0.0.3.6, linux: 0.0.3.7 (12/12現在)
+- [PyPI](https://pypi.org/)
+- [TestPyPI](https://test.pypi.org/)
+- [Python のプロジェクトをパッケージングする](https://packaging.python.org/ja/latest/tutorials/packaging-projects/)
+- [Python でパッケージを開発して配布する標準的な方法 2023 年編](https://qiita.com/propella/items/5cd89caee6379920d889)
 
 ## TestPyPI
 - python3 -m build
@@ -41,6 +45,18 @@ numpy = { version = "1.21.2", python = "^3.8" }
 
 ## アプリ名
 - word, list, reading, english, learning, study, assist, support, comprehension, analyze, language
+
+## 1214-19
+- comboboxのスクロール or 検索候補
+- windows表記おかしい問題の解決
+- UbuntuでGUIアプリを実行する方法を調べる
+- ウィンドウの初期位置を真ん中にする
+- Testのエラー判定おかしい
+- Testの意味被りを無くす(test: テスト1, テスト2の場合選択肢にはどちらか一つしか表示しない)
+- 削除した単語を再度登録した場合の処理が間違っている可能性
+- 言語のタブ分け
+- レイアウト、文字の色の指定
+- メニューバー、終了方法の選択肢を増やす
 
 ## 1213
 - 各ウィンドウの色を変更
