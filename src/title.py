@@ -2,6 +2,7 @@
 import os
 import wx
 import json
+import platform
 from os.path import expanduser
 from libs.common import json_open, set_font, path
 from libs.newdate import HistoryWrite
@@ -12,7 +13,14 @@ import history
 
 class SampleFrame(wx.Frame):
     def __init__(self, parent, id, title):
-        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(450, 550))
+        system = platform.system()
+        if system == "Windows":
+            self.x = 300
+            self.y = 500
+        else:
+            self.x = 450
+            self.y = 550
+        wx.Frame.__init__(self, parent, title=title, pos=(100, 100), size=(self.x, self.y))
         self.home_directory = expanduser("~")
         self.flag = True
         #self.Bind(wx.EVT_CLOSE, self.onExit)
@@ -97,7 +105,11 @@ class SampleFrame(wx.Frame):
     def test(self, event):
         #subprocess.Popen(["python3", "word_test.py"])
         json_data = json_open(path("words.json"))
-        if len(json_data) < 4: # words.jsonのデータが4つ未満なら
+        wordlist = []
+        for value in json_data.values():
+            wordlist.append(value["word"])
+        wordlist = list(set(wordlist))
+        if len(wordlist) < 4: # 登録されている単語が4つ未満なら
             error = wx.MessageDialog(self, "単語を4つ以上登録してください.", "エラー", wx.ICON_ERROR | wx.OK)
             error.ShowModal()
         else:
@@ -151,6 +163,7 @@ class SampleFrame(wx.Frame):
 class SampleApp(wx.App):
     def OnInit(self):
         frame = SampleFrame(None, -1, "Title")
+        frame.Centre()
         self.SetTopWindow(frame)
         frame.Show(True)
         return True
@@ -159,7 +172,7 @@ def main():
     app = SampleApp()
     app.MainLoop()
 
-#main()
+main()
 
 # メイン
 '''

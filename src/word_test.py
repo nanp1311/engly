@@ -2,13 +2,21 @@
 import random
 import wx
 import textwrap
+import platform
 from libs.common import json_open, json_write, path, set_font
 from libs.newdate import HistoryWrite
 
 # メインフレームクラス
 class SampleFrame(wx.Frame):
     def __init__(self, parent, ID, title):
-        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 600))
+        system = platform.system()
+        if system == "Windows":
+            self.x = 600
+            self.y = 400
+        else:
+            self.x = 800
+            self.y = 600
+        wx.Frame.__init__(self, parent, title=title, pos=(100, 100), size=(self.x, self.y))
         # jsonファイルのパス
         self.words_file = path("words.json")
         self.history_file = path("history.json")
@@ -225,6 +233,7 @@ class SampleFrame(wx.Frame):
 class SampleApp(wx.App):
     def OnInit(self):
         frame = SampleFrame(None, -1, "Test")
+        frame.Centre()
         self.SetTopWindow(frame)
         frame.Show(True)
         return True

@@ -1,10 +1,18 @@
 #!/usr/bin/python3
 import wx
+import platform
 from libs.common import json_open, json_write, path, set_font, add_word
 
 class MyFrame(wx.Frame):
     def __init__(self, parent, ID, title):
-        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(800, 400))
+        system = platform.system()
+        if system == "Windows":
+            self.x = 600
+            self.y = 300
+        else:
+            self.x = 800
+            self.y = 400
+        wx.Frame.__init__(self, parent, title=title, pos=(100, 100), size=(self.x, self.y))
         # words.jsonのパス
         self.filename = path("words.json")
         # 変数の初期化
@@ -207,6 +215,7 @@ class MyFrame(wx.Frame):
 class MyApp(wx.App):
     def OnInit(self):
         frame = MyFrame(None, -1, "Wordlist")
+        frame.Centre()
         self.SetTopWindow(frame)
         frame.Show(True)
         return True

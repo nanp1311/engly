@@ -50,13 +50,54 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - comboboxのスクロール or 検索候補
 - windows表記おかしい問題の解決
 - UbuntuでGUIアプリを実行する方法を調べる
-- ウィンドウの初期位置を真ん中にする
-- Testのエラー判定おかしい
 - Testの意味被りを無くす(test: テスト1, テスト2の場合選択肢にはどちらか一つしか表示しない)
 - 削除した単語を再度登録した場合の処理が間違っている可能性
 - 言語のタブ分け
 - レイアウト、文字の色の指定
 - メニューバー、終了方法の選択肢を増やす
+
+## 1214
+#### Testの実行判定の修正
+- words.jsonのデータの数が4個未満なら実行しないようにしていた
+- 1つの単語に複数の意味を登録した場合単語が4個未満でもデータの数が4個以上となる状況を作ることができた
+- 異なる単語の数が4個未満なら実行できないように修正した
+
+#### ウィンドウの初期位置を真ん中にする
+- pos=(100, 100)で位置の指定, frame.Centre()で中心に作られる
+- Ubuntuでは適用されない
+- [Frame - 表示位置の指定](https://www.python-izm.com/gui/wxpython/wxpython_frame/#i-3)
+
+#### osの判定、os毎にウィンドウサイズを変更する
+- platformモジュールを使用
+- __init__内でosを判定しsizeの値を変更する
+```ChatGPT
+You
+Pythonで使用中のos(windows, Mac, Linux)を判定するプログラムを書いてください。
+ChatGPT
+PythonでOSを判定するためには、platformモジュールを使用すると便利です。以下は、OSがWindows、Mac、またはLinuxであるかを判定するプログラムの例です。
+```
+```python
+import platform
+
+def detect_os():
+    system = platform.system()
+
+    if system == "Windows":
+        return "Windows"
+    elif system == "Darwin":
+        return "Mac"
+    elif system == "Linux":
+        return "Linux"
+    else:
+        return "Unknown"
+
+if __name__ == "__main__":
+    os_name = detect_os()
+    print(f"The current operating system is: {os_name}")
+```
+```ChatGPT
+このプログラムでは、platform.system()を使用して現在のOSを取得し、それに基づいて判定を行います。これを実行すると、現在のOSが表示されます。
+```
 
 ## 1213
 - 各ウィンドウの色を変更

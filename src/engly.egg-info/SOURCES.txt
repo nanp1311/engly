@@ -5,6 +5,7 @@ pyproject.toml
 requirements.txt
 src/history.py
 src/reading.py
+src/test.py
 src/title.py
 src/word_list.py
 src/word_test.py
