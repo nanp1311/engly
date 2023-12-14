@@ -27,10 +27,6 @@ class SampleFrame(wx.Frame):
         # jsonファイルの読み込み
         self.words_data = json_open(self.words_file)
         self.history_data = json_open(self.history_file)
-        # 単語を入れる配列
-        self.word_list = []
-        # 単語をkey, 意味を値とする辞書 -> 複数の意味に対応できない
-        self.meaning_list = {}
         # 出題された問題数
         self.count = 1
         # 正解の選択肢の番号
@@ -109,6 +105,9 @@ class SampleFrame(wx.Frame):
 
     # 単語の用意と出題確率の操作
     def __set_word(self):
+        self.key_list = [] # keyを入れる配列
+        self.word_list = {} # key:単語
+        self.meaning_list = {} # key:意味
         #number = 0
         for key, value in self.words_data.items():
             # (間違えた回数/出題回数)*100 -> 間違えた割合(%)毎に出題回数を増やす
@@ -118,9 +117,10 @@ class SampleFrame(wx.Frame):
             prob = int( ( (value["incorrect"] + 1) / (value["correct"] + value["incorrect"] + 1) ) * 100)
             if value["correct"] - value["incorrect"] < 5:
                 for i in range(0, prob):
-                    self.word_list.append(key)
+                    self.key_list.append(key)
             else:
-                self.word_list.append(key)
+                self.key_list.append(key)
+            self.word_list[key] = value["word"]
             self.meaning_list[key] = value["meaning"]
         '''
             number += 1
@@ -147,13 +147,14 @@ class SampleFrame(wx.Frame):
 
     # 問題と選択肢の更新
     def renewal(self):
-        self.word = random.choice(self.word_list)
-        self.ques.SetLabel(str(self.count) + ". " + self.word)
-        meaning = self.meaning_list[self.word]
+        self.key = random.choice(self.key_list)
+        meaning = self.meaning_list[self.key]
         option = [meaning]
         i = 0
         while i < 3:
-            word_dummy = random.choice(self.word_list)
+            word_dummy = random.choice(self.key_list)
+            while self.word_list[self.key] == self.word_list[word_dummy]:
+                word_dummy = random.choice(self.key_list)
             if self.meaning_list[word_dummy] != meaning:
                 option.append(self.meaning_list[word_dummy])
                 option = list(set(option))
@@ -164,6 +165,7 @@ class SampleFrame(wx.Frame):
         for i in range(0, len(option)):
             if option[i] == meaning:
                 self.correct = i
+        self.ques.SetLabel(str(self.count) + ". " + self.word_list[self.key])
         self.ans1.SetLabel('\n'.join(textwrap.wrap(option[0], 13)))
         self.ans2.SetLabel('\n'.join(textwrap.wrap(option[1], 13)))
         self.ans3.SetLabel('\n'.join(textwrap.wrap(option[2], 13)))
@@ -177,13 +179,13 @@ class SampleFrame(wx.Frame):
         self.ans_available_check(False)
         self.count += 1
         # meaningの最後尾に空白がある場合正しく判定されない
-        if self.meaning_list[self.word] == btn.GetLabel().replace("\n", "").strip():
+        if self.meaning_list[self.key] == btn.GetLabel().replace("\n", "").strip():
             btn.SetBackgroundColour('#1AFFFC')
-            self.words_data[self.word]["correct"] += 1
+            self.words_data[self.key]["correct"] += 1
             self.history_data[self.today]["total"] += 1
         else:
             btn.SetBackgroundColour('#FF9999')
-            self.words_data[self.word]["incorrect"] += 1
+            self.words_data[self.key]["incorrect"] += 1
             # 正解の選択肢のボタンの色を変更
             exec("self.ans{}.SetBackgroundColour('#1AFFFC')".format(self.correct+1))
 

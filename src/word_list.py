@@ -18,6 +18,7 @@ class MyFrame(wx.Frame):
         # 変数の初期化
         self.select_word = ""
         self.tmpword = " " # 空白1つ
+        self.flag = False
         # おまじない
         #self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__create_widget()
@@ -122,7 +123,8 @@ class MyFrame(wx.Frame):
     def push_show(self, event):
         self.select_word = self.combobox.GetValue().strip()
         # 単語の意味を全てmultilistに格納
-        if self.select_word != self.tmpword:
+        if self.select_word != self.tmpword or self.flag:
+            self.flag = False
             self.multilist = []
             for key, value in self.keylist.items():
                 if value == self.select_word:
@@ -168,6 +170,7 @@ class MyFrame(wx.Frame):
         self.txt_meaning.SetLabel("Deleted " + self.select_word + ": " + self.meaninglist[self.show_key])
         del self.keylist[self.show_key]
         del self.meaninglist[self.show_key]
+        self.flag = True
         self.txt_meaning.SetFont(set_font(20))
         self.txt_meaning.SetForegroundColour('#0000FF')
         self.btn_delete.Disable()
@@ -179,6 +182,7 @@ class MyFrame(wx.Frame):
         word = self.txtCtrl_word.GetValue().strip() #空白とか消す
         meaning = self.txtCtrl_meaning.GetValue().strip()
         key = word
+        self.flag = True
         i = 2
         if word != "" and meaning != "": #テキストボックスが空白でなければ
             # 単語の追加
@@ -187,6 +191,7 @@ class MyFrame(wx.Frame):
                 i += 1
             add_word(word, meaning, key, self.filename)
             # 配列への追加
+            self.wordlist.append(word)
             self.keylist[key] = word
             self.meaninglist[key] = meaning
             # 成功時のメッセージ表示
