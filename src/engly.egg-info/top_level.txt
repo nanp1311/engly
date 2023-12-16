@@ -1,8 +1,6 @@
 history
 libs
 reading
-reading_win
-test
 title
 word_list
 word_test

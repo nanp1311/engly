@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 import wx
-import wx.lib.scrolledpanel
 import openai
 import platform
 from libs.common import json_open, json_write, path, set_font, add_word
 
-class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
+class MyScrollableWindow(wx.ScrolledWindow):
     def __init__(self, parent):
-        wx.lib.scrolledpanel.ScrolledPanel.__init__(self, parent, style=wx.VSCROLL)
+        wx.ScrolledWindow.__init__(self, parent, style=wx.VSCROLL)
+        self.SetVirtualSize((2000, 2000))
+        self.SetScrollbars(20, 20, 1, 1)
+
         # テキストボックスの内容を入れる変数
         self.input_words = ""
         self.input_trans = ""
@@ -16,17 +18,14 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
         self.file_response = path("response.json")
         # カウントのための変数
         self.count = 0
-        self.__deploy_panel()
+        # 必要なやつ
+        #self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__create_widget()
         self.__do_layout()
-    
-    def __deploy_panel(self):
-        self.panel = wx.Panel(self)
-        self.panel.SetBackgroundColour(wx.Colour(224, 224, 224)) # 色の設定
-        self.panel.SetSize((2000, 2000)) # スクロールバーが必要なサイズの設定
-        #self.SetScrollbars(1, 1, 1, 1) # スクロールバーの最大範囲の設定
 
+    # Widgetを作成するメソッド
     def __create_widget(self):
+        self.SetBackgroundColour((224, 224, 224))
         # テキストボックス
         self.txtCtrl = wx.TextCtrl(self, -1, style=wx.TE_MULTILINE, size=(500, 80))
         self.txtCtrl.SetForegroundColour('#000000')
@@ -63,14 +62,14 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
         self.sizer_btn.Add(self.btn_trans, flag=wx.ALIGN_CENTER | wx.TOP, border=5)
         # テキストボックスとボタンを結合
         self.sizer.Add(self.sizer_btn, flag=wx.ALIGN_CENTER | wx.ALL, border=0)
-        self.sizer_all.Add(self.sizer, flag=wx.ALIGN_CENTER | wx.ALL, border=30)
+        self.sizer_all.Add(self.sizer, flag=wx.ALIGN_LEFT | wx.ALL, border=30)
 
         # 単語保存用ボタン、返答表示用テキストを結合
         self.sizer_txt.Add(self.sizer_word, flag=wx.ALIGN_LEFT | wx.TOP, border=0)
         self.sizer_txt.Add(self.txt, flag=wx.ALIGN_LEFT | wx.TOP, border=20)
 
         # 全てを合体しセット
-        self.sizer_all.Add(self.sizer_txt, flag=wx.ALIGN_LEFT | wx.LEFT, border=100)
+        self.sizer_all.Add(self.sizer_txt, flag=wx.ALIGN_LEFT | wx.LEFT, border=50)
         self.SetSizer(self.sizer_all)
 
     # ボタン押したときの処理
@@ -79,8 +78,7 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
         # テキストボックスが更新されていれば返答をリセット
         if self.txtCtrl.GetValue().strip() != self.input_words:
             self.input_words = self.txtCtrl.GetValue().strip()
-            if self.input_words != "":
-                flag = True
+            flag = True
         # テキストボックスの内容を受け取りChatGPTに質問
         if flag:
             sys = "あなたは英語が得意なアシスタントです。"
@@ -106,8 +104,7 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
                         exec("self.btn_{}.SetForegroundColour('#000000')".format(self.count))
                         exec("self.sizer_word.Add(self.btn_{}, flag=wx.ALIGN_LEFT | wx.TOP, border=10)".format(self.count))
                         self.count += 1
-        self.SetupScrolling(scroll_x=True, scroll_y=True)
-        self.panel.FitInside()
+        self.FitInside()
         self.Layout()
     
     def push_add(self, event):
@@ -125,8 +122,7 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
         # テキストボックスが更新されていれば返答をリセット
         if self.txtCtrl.GetValue().strip() != self.input_trans:
             self.input_trans = self.txtCtrl.GetValue().strip()
-            if self.input_trans != "":
-                flag = True
+            flag = True
         # テキストボックスの内容を受け取りChatGPTに質問
         if flag:
             sys = "あなたは英語が得意なアシスタントです。"
@@ -140,8 +136,7 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
                 self.write_response("Translation", self.input_trans, response)
                 # ChatGPTの返答を表示
                 self.txt.SetLabel(response)
-        self.SetupScrolling(scroll_x=True, scroll_y=True)
-        self.panel.FitInside()
+        self.FitInside()
         self.Layout()
 
     # ChatGPTに質問
@@ -172,36 +167,22 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
         json_data["ChatGPT"].append(new_data)
         json_write(self.file_response, json_data)
 
-
 class SampleFrame(wx.Frame):
     def __init__(self, parent, ID, title):
-        system = platform.system()
-        if system == "Windows":
+        self.system = platform.system()
+        if self.system == "Windows":
             self.x = 720
             self.y = 480
         else:
             self.x = 800
             self.y = 600
-        wx.Frame.__init__(self, parent, title=title, pos=(100, 100), size=(self.x, self.y))
-        self.scroll_panel = MyScrollPanel(self)
-        
-        # 必要なやつ
-        #self.Bind(wx.EVT_CLOSE, self.onExit)
+        wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(self.x, self.y))
+        scrollable_window = MyScrollableWindow(self)
         self.__set_apikey()
-
-        self.sizer_all = wx.BoxSizer(wx.VERTICAL)
-        self.sizer_all.Add(self.scroll_panel, 1, wx.EXPAND)
-        self.SetSizer(self.sizer_all)
 
     def __set_apikey(self):
         with open(path("apikey", "api"), "r") as f:
-            key = f.read().strip()
-        if key != "":
-            openai.api_key = key
-        else:
-            error = wx.MessageDialog(self, "APIキーが登録されていません。", "エラー", wx.ICON_ERROR | wx.OK)
-            error.ShowModal()
-            self.Destroy()
+            openai.api_key = f.read().strip()
 
     # xボタン押下時の処理
     def onExit(self, event):
@@ -215,8 +196,8 @@ class SampleFrame(wx.Frame):
 class SampleApp(wx.App):
     def OnInit(self):
         frame = SampleFrame(None, -1, "Reading")
-        frame.Centre()
         self.SetTopWindow(frame)
+        frame.Centre()
         frame.Show(True)
         return True
 
@@ -225,5 +206,3 @@ class SampleApp(wx.App):
 def main():
     app = SampleApp()
     app.MainLoop()
-
-#main()

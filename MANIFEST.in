@@ -3,3 +3,4 @@ include README.md
 include requirements.txt
 exclude MEMO.md
 exclude test.py
+exclude dist_old

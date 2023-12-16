@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: engly
-Version: 0.0.4.9.1
+Version: 0.1.0
 Summary: English Learning Application
 Author-email: nanp1311 <pengin.na11@gmail.com>
 Project-URL: Homepage, https://github.com/nanp1311/untitled
@@ -42,7 +42,9 @@ Requires-Dist: plotly~=5.16.1
 ## ライセンス
 - MITライセンス
 ## Version
-### 0.0.4.7
+### 0.1.0
+- WindowsのReadingにスクロールを追加
+### 0.0.4.9.1
 - Readingの返答が保存できない不具合を修正
 ### 0.0.4.4
 - WindowsでReadingが実行できない不具合を修正

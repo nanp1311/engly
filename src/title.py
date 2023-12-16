@@ -9,7 +9,6 @@ from libs.newdate import HistoryWrite
 import word_list
 import word_test
 import reading
-import reading_win
 import history
 
 class SampleFrame(wx.Frame):
@@ -134,10 +133,7 @@ class SampleFrame(wx.Frame):
             error = wx.MessageDialog(self, "APIキーが登録されていません。", "エラー", wx.ICON_ERROR | wx.OK)
             error.ShowModal()
         else:
-            if self.system == "Windows":
-                reading_win.main()
-            else:
-                reading.main()
+            reading.main()
 
     def history(self, event):
         #subprocess.Popen(["python3", "history.py"])
