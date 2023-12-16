@@ -93,7 +93,7 @@ class SampleFrame(wx.Frame):
             os.makedirs(fig_dir)
             os.makedirs(api_dir)
             with open(res_json, "w") as file:
-                json.dump({}, file, indent=2)
+                json.dump({"ChatGPT":[]}, file, indent=2)
             with open(his_json, "w") as file:
                 json.dump({}, file, indent=2)
             with open(word_json, "w") as file:

@@ -41,7 +41,6 @@ numpy = { version = "1.21.2", python = "^3.8" }
 ## 正式リリースまでの課題
 - ChatGPTの履歴確認
 - 品詞も出す
-- ウインドウの大きさの自動調節、初期位置指定
 
 ## アプリ名
 - word, list, reading, english, learning, study, assist, support, comprehension, analyze, language
@@ -52,6 +51,7 @@ numpy = { version = "1.21.2", python = "^3.8" }
 - UbuntuでGUIアプリを実行する方法を調べる
 - 言語のタブ分け
 - メニューバー、終了方法の選択肢を増やす
+- 英文の解説
 
 ## 1216
 #### 一部のMacにて文字の色が変わってしまう問題を修正
