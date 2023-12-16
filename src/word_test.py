@@ -43,16 +43,19 @@ class SampleFrame(wx.Frame):
 
         # 問題文テキスト
         self.ques = wx.StaticText(self, label="Push the Start!", style=wx.TE_CENTER)
+        self.ques.SetForegroundColour('#000000')
         self.ques.SetFont(set_font(40))
 
         # 開始ボタン
         self.advance = wx.Button(self, label="Start!")
+        self.advance.SetForegroundColour('#000000')
         self.advance.Bind(wx.EVT_BUTTON, self.advance_push)
         
         # 回答ボタン1
         self.ans1 = wx.Button(self, label="1")
         self.ans1.Bind(wx.EVT_BUTTON, self.judge)
         self.ans1.SetFont(set_font(20))
+        self.ans1.SetForegroundColour('#000000')
         self.ans1.SetBackgroundColour('#FFFFFF')
         self.ans1.Disable()
 
@@ -60,6 +63,7 @@ class SampleFrame(wx.Frame):
         self.ans2 = wx.Button(self, label="2")
         self.ans2.Bind(wx.EVT_BUTTON, self.judge)
         self.ans2.SetFont(set_font(20))
+        self.ans2.SetForegroundColour('#000000')
         self.ans2.SetBackgroundColour('#FFFFFF')
         self.ans2.Disable()
 
@@ -67,6 +71,7 @@ class SampleFrame(wx.Frame):
         self.ans3 = wx.Button(self, label="3")
         self.ans3.Bind(wx.EVT_BUTTON, self.judge)
         self.ans3.SetFont(set_font(20))
+        self.ans3.SetForegroundColour('#000000')
         self.ans3.SetBackgroundColour('#FFFFFF')
         self.ans3.Disable()
 
@@ -74,6 +79,7 @@ class SampleFrame(wx.Frame):
         self.ans4 = wx.Button(self, label="4")
         self.ans4.Bind(wx.EVT_BUTTON, self.judge)
         self.ans4.SetFont(set_font(20))
+        self.ans4.SetForegroundColour('#000000')
         self.ans4.SetBackgroundColour('#FFFFFF')
         self.ans4.Disable()
 

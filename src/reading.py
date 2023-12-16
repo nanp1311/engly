@@ -29,18 +29,22 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
     def __create_widget(self):
         # テキストボックス
         self.txtCtrl = wx.TextCtrl(self, -1, style=wx.TE_MULTILINE, size=(500, 80))
+        self.txtCtrl.SetForegroundColour('#000000')
         self.txtCtrl.SetFont(set_font(15))
         
         # wordボタン
         self.btn_word = wx.Button(self, label="word")
+        self.btn_word.SetForegroundColour('#000000')
         self.btn_word.Bind(wx.EVT_BUTTON, self.push_word)
 
         # transボタン
         self.btn_trans = wx.Button(self, label="trans")
+        self.btn_trans.SetForegroundColour('#000000')
         self.btn_trans.Bind(wx.EVT_BUTTON, self.push_trans)
 
         # 返答文表示
         self.txt = wx.StaticText(self, -1, "", style=wx.TE_LEFT)
+        self.txt.SetForegroundColour('#000000')
         self.txt.SetFont(set_font(15))
 
     # レイアウトを設定するメソッド
@@ -99,6 +103,7 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
                     if ": " in word:
                         exec("self.btn_{} = wx.Button(self, label=word)".format(self.count))
                         exec("self.btn_{}.Bind(wx.EVT_BUTTON, self.push_add)".format(self.count))
+                        exec("self.btn_{}.SetForegroundColour('#000000')".format(self.count))
                         exec("self.sizer_word.Add(self.btn_{}, flag=wx.ALIGN_LEFT | wx.TOP, border=10)".format(self.count))
                         self.count += 1
         self.SetupScrolling(scroll_x=True, scroll_y=True)

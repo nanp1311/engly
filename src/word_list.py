@@ -30,36 +30,48 @@ class MyFrame(wx.Frame):
     def __create_widget(self):
         self.SetBackgroundColour((224, 224, 224))
         # コンボボックス
-        self.combobox = wx.ComboBox(self, style=wx.CB_DROPDOWN | wx.CB_SORT)
+        self.combobox = wx.ComboBox(self, style=wx.CB_DROPDOWN | wx.CB_SORT | wx.VSCROLL)
+
         # 選択した英単語の意味を表示するボタン
         self.btn_show = wx.Button(self, -1, "show")
+        self.btn_show.SetForegroundColour('#000000')
         self.btn_show.Bind(wx.EVT_BUTTON, self.push_show)
 
         # 選択した英単語を削除するボタン
         self.btn_delete = wx.Button(self, -1, "delete")
+        self.btn_delete.SetForegroundColour('#000000')
         self.btn_delete.Bind(wx.EVT_BUTTON, self.push_delete)
         self.btn_delete.Disable()
 
         # 英単語の意味を表示するテキスト
         self.txt_meaning = wx.StaticText(self, -1, "", style=wx.TE_CENTER)
+        self.txt_meaning.SetForegroundColour('#000000')
         self.txt_meaning.SetFont(set_font(25))
 
         # 単語検索と単語入力を区切る線
         line = "─────────────────────────────────────────────────────────────"
         self.txt_line = wx.StaticText(self, -1, line, style=wx.TE_CENTER)
+        self.txt_line.SetForegroundColour('#000000')
 
         # word入力の案内
         self.word = wx.StaticText(self, -1, "word", style=wx.TE_CENTER)
+        self.word.SetForegroundColour('#000000')
+
         # wordを入力するためのテキストボックス
         self.txtCtrl_word = wx.TextCtrl(self, -1, size=(430, 25) )
+        self.txtCtrl_word.SetForegroundColour('#000000')
         
         # meaning入力の案内
         self.meaning = wx.StaticText(self, -1, "meaning", style=wx.TE_CENTER)
+        self.meaning.SetForegroundColour('#000000')
+
         # meaningを入力するためのテキストボックス
         self.txtCtrl_meaning = wx.TextCtrl(self, -1, size=(430, 25) )
+        self.txtCtrl_meaning.SetForegroundColour('#000000')
         
         # 入力したwordとmeaningを追加するボタン
         self.btn_add = wx.Button(self, -1, "add")
+        self.btn_add.SetForegroundColour('#000000')
         self.btn_add.Bind(wx.EVT_BUTTON, self.push_add)
 
         # 追加が成功したことを報告するためのテキスト

@@ -33,27 +33,35 @@ class SampleFrame(wx.Frame):
 
         self.txt = wx.StaticText(self, label = "Menu")
         self.txt.SetFont(set_font(40))
+        self.txt.SetForegroundColour('#000000')
 
         self.btn_list = wx.Button(self, label="List")
         self.btn_list.Bind(wx.EVT_BUTTON, self.list)
+        self.btn_list.SetForegroundColour('#000000')
 
         self.btn_test = wx.Button(self, label="Test")
         self.btn_test.Bind(wx.EVT_BUTTON, self.test)
+        self.btn_test.SetForegroundColour('#000000')
 
         self.btn_reading = wx.Button(self, label="Reading")
         self.btn_reading.Bind(wx.EVT_BUTTON, self.reading)
+        self.btn_reading.SetForegroundColour('#000000')
 
         self.btn_history = wx.Button(self, label="History")
         self.btn_history.Bind(wx.EVT_BUTTON, self.history)
+        self.btn_history.SetForegroundColour('#000000')
 
         self.ctrl_apikey = wx.TextCtrl(self, -1, style=wx.TE_MULTILINE, size=(220,100))
+        self.ctrl_apikey.SetForegroundColour('#000000')
         self.ctrl_apikey.Hide()
 
         self.btn_apikey = wx.Button(self, label="apikey")
         self.btn_apikey.Bind(wx.EVT_BUTTON, self.apikey)
+        self.btn_apikey.SetForegroundColour('#000000')
 
         self.btn_save = wx.Button(self, label="save")
         self.btn_save.Bind(wx.EVT_BUTTON, self.save)
+        self.btn_save.SetForegroundColour('#000000')
         self.btn_save.Hide()
 
     def __do_layout(self):
