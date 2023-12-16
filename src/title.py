@@ -15,7 +15,7 @@ class SampleFrame(wx.Frame):
     def __init__(self, parent, id, title):
         self.system = platform.system()
         if self.system == "Windows":
-            self.x = 300
+            self.x = 450
             self.y = 500
         else:
             self.x = 450
