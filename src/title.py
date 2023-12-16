@@ -9,12 +9,13 @@ from libs.newdate import HistoryWrite
 import word_list
 import word_test
 import reading
+import reading_win
 import history
 
 class SampleFrame(wx.Frame):
     def __init__(self, parent, id, title):
-        system = platform.system()
-        if system == "Windows":
+        self.system = platform.system()
+        if self.system == "Windows":
             self.x = 300
             self.y = 500
         else:
@@ -131,7 +132,10 @@ class SampleFrame(wx.Frame):
             error = wx.MessageDialog(self, "APIキーが登録されていません。", "エラー", wx.ICON_ERROR | wx.OK)
             error.ShowModal()
         else:
-            reading.main()
+            if self.system == "Windows":
+                reading_win.main()
+            else:
+                reading.main()
 
     def history(self, event):
         #subprocess.Popen(["python3", "history.py"])
@@ -180,7 +184,7 @@ def main():
     app = SampleApp()
     app.MainLoop()
 
-main()
+#main()
 
 # メイン
 '''
