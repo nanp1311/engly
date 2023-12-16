@@ -164,8 +164,6 @@ class MyScrollPanel(wx.lib.scrolledpanel.ScrolledPanel):
     # ChatGPTの返答をjsonファイルに保存
     def write_response(self, tag, sentence, response):
         json_data = json_open(self.file_response)
-        if len(json_data) < 1:
-            json_write(self.file_response, {"ChatGPT":[]})
         new_data = {
                     "tag": tag,
                     "sentence": sentence,

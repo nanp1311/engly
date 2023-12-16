@@ -4,7 +4,7 @@ import wx
 import json
 import platform
 from os.path import expanduser
-from libs.common import json_open, set_font, path
+from libs.common import json_open, json_write, set_font, path
 from libs.newdate import HistoryWrite
 import word_list
 import word_test
@@ -103,7 +103,9 @@ class SampleFrame(wx.Frame):
             init = HistoryWrite()
             init.history_init()
         else:
-            pass
+            json_data = json_open(path("response.json"))
+            if not "ChatGPT" in json_data:
+                json_write(path("response.json"), {"ChatGPT":[]})
 
         # gitのエラー直す
 
