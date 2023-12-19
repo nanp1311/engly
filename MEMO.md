@@ -40,6 +40,20 @@
 - メニューバー、終了方法の選択肢を増やす
 - 英文の解説
 
+## 1219
+#### メニューバーの追加の検討
+```Python
+menuBar = wx.MenuBar()
+menu = wx.Menu()
+menuBar.Append(menu, '&File')
+self.SetMenuBar(menuBar)
+exit = menu.Append(-1, '&Exit', 'Terminate the application.')
+self.Bind(wx.EVT_MENU, self.onExit)
+```
+- プログラム終了処理だけのバーを入れる必要はあるのか
+- Listで複数のリストを選べるようにする機能を入れるならメニューバーを使いたい
+- [MenuBar](https://www.python-izm.com/gui/wxpython/wxpython_menubar/)
+
 ## 1216
 #### Listのcomboboxにスクロールを追加
 ```ChatGPT

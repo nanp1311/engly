@@ -127,7 +127,7 @@ class MyScrollableWindow(wx.ScrolledWindow):
         if flag:
             sys = "あなたは英語が得意なアシスタントです。"
             assi = "英文を丁寧に翻訳します。"
-            usr = self.input_trans + "この英文の日本語訳を表示してください。それに加え、この英文の主語と動詞を英語で表示してください。"
+            usr = self.input_trans + "この英文の日本語訳を表示してください。それに加え、この英文の主語と動詞を英語で表示してください。" #さらに、この英文の文法について解説してください。"
             response = self.api_response(sys, assi, usr)
             if not response:
                 self.txt.SetLabel("APIキーが間違っています。")
