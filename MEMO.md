@@ -35,12 +35,132 @@
 ## 疑問点
 - tar.gzと.whlがなにかわからない(ソースとビルド済？)
 
-## 1214-19
+## 1220-0110
+- MacでListが動かない
+- 一部のMacで文字の色がおかしい
 - 言語のタブ分け
 - メニューバー、終了方法の選択肢を増やす
 - 英文の解説
 
 ## 1219
+#### Version0.1.2
+- Readingのテキストが一部表示されない不具合を修正したVersion0.1.2をリリース
+
+#### テキストの表示が不完全
+- ChatGPTの返答の最後の一行が表示されたりされなかったりする
+- ウィンドウを最大化すると直る
+```
+You
+StaticTextのサイズを調整する方法を教えてください。
+ChatGPT
+wx.StaticTextのサイズを調整するには、SetSizeまたはsizerを使用することが一般的です。以下に、これらの方法の例を示します。
+
+SetSizeを使用する場合:
+```
+```python
+import wx
+
+app = wx.App(False)
+frame = wx.Frame(None, wx.ID_ANY, "StaticTextサイズの調整", size=(400, 200))
+
+panel = wx.Panel(frame, wx.ID_ANY)
+static_text = wx.StaticText(panel, wx.ID_ANY, "表示されなかったテキストがここに入ります。")
+
+# StaticTextのサイズをテキストに合わせて調整
+static_text.SetSize(static_text.GetBestSize())
+
+frame.Show(True)
+app.MainLoop()
+```
+```
+Sizerを使用する場合:
+```
+```python
+Copy code
+import wx
+
+app = wx.App(False)
+frame = wx.Frame(None, wx.ID_ANY, "StaticTextサイズの調整", size=(400, 200))
+
+panel = wx.Panel(frame, wx.ID_ANY)
+static_text = wx.StaticText(panel, wx.ID_ANY, "表示されなかったテキストがここに入ります.")
+
+# Sizerを使用してStaticTextのサイズを調整
+sizer = wx.BoxSizer(wx.HORIZONTAL)
+sizer.Add(static_text, 1, wx.EXPAND)
+panel.SetSizer(sizer)
+
+frame.Show(True)
+app.MainLoop()
+```
+```
+これらの例では、SetSizeメソッドを使用するか、またはsizerを使ってStaticTextのサイズを調整しています。適切なサイズやレイアウトを見つけるために、アプリケーションの要件に応じて調整してみてください。
+```
+- Sizerはレイアウトに影響がでる可能性があるのでまずSetSizeの方を試す
+- SetSizeでは表示に変化はなかった
+- Sizerでも変化はなかった
+- 別の方法を試す
+```
+StaticTextのサイズを調整する他の方法を教えてください。
+ChatGPT
+StaticTextのサイズを調整するために、以下の方法を検討できます。
+
+SetMinSizeを使用する:
+```
+```python
+import wx
+
+app = wx.App(False)
+frame = wx.Frame(None, wx.ID_ANY, "StaticTextサイズの調整", size=(400, 200))
+
+panel = wx.Panel(frame, wx.ID_ANY)
+static_text = wx.StaticText(panel, wx.ID_ANY, "表示されなかったテキストがここに入ります.")
+
+# StaticTextの最小サイズを設定
+static_text.SetMinSize((200, -1))  # 幅200ピクセル、高さは自動調整
+
+frame.Show(True)
+app.MainLoop()
+Wrapを有効にする:
+
+python
+Copy code
+import wx
+
+app = wx.App(False)
+frame = wx.Frame(None, wx.ID_ANY, "StaticTextサイズの調整", size=(400, 200))
+
+panel = wx.Panel(frame, wx.ID_ANY)
+static_text = wx.StaticText(panel, wx.ID_ANY, "表示されなかったテキストがここに入ります.", style=wx.ST_ELLIPSIZE_END|wx.WRAP)
+
+frame.Show(True)
+app.MainLoop()
+```
+```
+Sizerを使用する（詳細な制御が可能）:
+```
+```python
+import wx
+
+app = wx.App(False)
+frame = wx.Frame(None, wx.ID_ANY, "StaticTextサイズの調整", size=(400, 200))
+
+panel = wx.Panel(frame, wx.ID_ANY)
+static_text = wx.StaticText(panel, wx.ID_ANY, "表示されなかったテキストがここに入ります.")
+
+sizer = wx.BoxSizer(wx.HORIZONTAL)
+sizer.Add(static_text, 0, wx.ALL|wx.EXPAND, 5)
+panel.SetSizer(sizer)
+
+frame.Show(True)
+app.MainLoop()
+```
+```
+これらの方法を組み合わせて試してみてください。たとえば、SetMinSizeとWrapを同時に使用することで、最小サイズを設定し、テキストがそれを超えた場合に自動的に改行されるようになります。
+```
+- SetMinSizeを試したところ，求めていた表示をしてくれた
+- SetMinSizeで解決したためWrapは試していない
+
 #### メニューバーの追加の検討
 ```Python
 menuBar = wx.MenuBar()

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: engly
-Version: 0.1.1
+Version: 0.1.4
 Summary: English Learning Application
 Author-email: nanp1311 <pengin.na11@gmail.com>
 Project-URL: Homepage, https://github.com/nanp1311/untitled
@@ -29,8 +29,8 @@ Requires-Dist: plotly~=5.16.1
 - リストに登録されている単語を出題、意味を4択から回答
 ### Reading
 - ChatGPTを使って以下の情報を提供する
-> 英文に含まれる単語、熟語とその意味の表示
-> 英文の翻訳と主語動詞の表示
+  - 英文に含まれる単語、熟語とその意味の表示
+  - 英文の翻訳と主語動詞の表示
 ### History
 - Testで正解した回数のグラフを表示
 ### apikey

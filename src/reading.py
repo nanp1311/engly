@@ -43,6 +43,7 @@ class MyScrollableWindow(wx.ScrolledWindow):
 
         # 返答文表示
         self.txt = wx.StaticText(self, -1, "", style=wx.TE_LEFT)
+        self.txt.SetMinSize((-1, 300))
         self.txt.SetForegroundColour('#000000')
         self.txt.SetFont(set_font(15))
 

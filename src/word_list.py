@@ -9,6 +9,9 @@ class MyFrame(wx.Frame):
         if system == "Windows":
             self.x = 600
             self.y = 300
+        elif system == "Darwin":
+            self.x = 800
+            self.y = 400
         else:
             self.x = 800
             self.y = 400

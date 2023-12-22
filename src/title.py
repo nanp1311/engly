@@ -23,7 +23,7 @@ class SampleFrame(wx.Frame):
         wx.Frame.__init__(self, parent, title=title, pos=(100, 100), size=(self.x, self.y))
         self.home_directory = expanduser("~")
         self.flag = True
-        #self.Bind(wx.EVT_CLOSE, self.onExit)
+        self.Bind(wx.EVT_CLOSE, self.onExit)
         self.__create_widget()
         self.__do_layout()
         self.__data_setup()
@@ -163,11 +163,15 @@ class SampleFrame(wx.Frame):
         
     # xボタン押下時の処理
     def onExit(self, event):
+        self.Destroy()
+        exit()
+        '''
         dlg = wx.MessageDialog(self, "プログラムを終了しますか？", "確認", wx.YES_NO | wx.ICON_QUESTION)
         if dlg.ShowModal() == wx.ID_YES:
             self.Destroy()  # ウィンドウを破棄してプログラムを終了
         else:
             dlg.Destroy()
+        '''
 
 # アプリケーションクラス
 class SampleApp(wx.App):
@@ -182,7 +186,7 @@ def main():
     app = SampleApp()
     app.MainLoop()
 
-#main()
+main()
 
 # メイン
 '''
