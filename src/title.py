@@ -52,7 +52,7 @@ class SampleFrame(wx.Frame):
         self.btn_history.SetForegroundColour('#000000')
 
         self.ctrl_apikey = wx.TextCtrl(self, -1, style=wx.TE_MULTILINE, size=(220,100))
-        self.ctrl_apikey.SetForegroundColour('#000000')
+        self.ctrl_apikey.SetDefaultStyle(wx.TextAttr(wx.BLACK))
         self.ctrl_apikey.Hide()
 
         self.btn_apikey = wx.Button(self, label="apikey")

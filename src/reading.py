@@ -28,7 +28,7 @@ class MyScrollableWindow(wx.ScrolledWindow):
         self.SetBackgroundColour((224, 224, 224))
         # テキストボックス
         self.txtCtrl = wx.TextCtrl(self, -1, style=wx.TE_MULTILINE, size=(500, 80))
-        self.txtCtrl.SetForegroundColour('#000000')
+        self.txtCtrl.SetDefaultStyle(wx.TextAttr(wx.BLACK))
         self.txtCtrl.SetFont(set_font(15))
         
         # wordボタン
@@ -114,7 +114,7 @@ class MyScrollableWindow(wx.ScrolledWindow):
         # ボタンのラベルを取得し分解
         content = btn.GetLabel().split(': ')
         # 単語と意味の保存
-        add_word(content[0].strip(), content[1].strip(), self.file_words)
+        add_word(content[0].strip(), content[1].strip(), content[0].strip(), self.file_words)
         # ボタンを押せるのは一度だけ
         btn.Disable()
 

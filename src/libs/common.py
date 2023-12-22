@@ -24,6 +24,10 @@ def set_font(i):
 # jsonファイルに単語と意味を追加する
 def add_word(word, meaning, key, filename):
     json_data = json_open(filename)
+    i = 2
+    while key in json_data:
+        key = word + str(i)
+        i += 1
     new_word = {
                 "word": word,
                 "meaning": meaning,
