@@ -186,7 +186,7 @@ def main():
     app = SampleApp()
     app.MainLoop()
 
-main()
+#main()
 
 # メイン
 '''
