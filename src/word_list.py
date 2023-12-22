@@ -33,7 +33,7 @@ class MyFrame(wx.Frame):
     def __create_widget(self):
         self.SetBackgroundColour((224, 224, 224))
         # コンボボックス
-        self.combobox = wx.ComboBox(self, style=wx.CB_DROPDOWN | wx.CB_SORT | wx.VSCROLL)
+        self.combobox = wx.ComboBox(self, style=wx.CB_DROPDOWN | wx.CB_SORT)
 
         # 選択した英単語の意味を表示するボタン
         self.btn_show = wx.Button(self, -1, "show")
