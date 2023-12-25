@@ -17,9 +17,11 @@ class SampleFrame(wx.Frame):
         if self.system == "Windows":
             self.x = 450
             self.y = 500
+            self.enc = 'cp932'
         else:
             self.x = 450
             self.y = 550
+            self.enc = 'utf-8'
         wx.Frame.__init__(self, parent, title=title, pos=(100, 100), size=(self.x, self.y))
         self.home_directory = expanduser("~")
         self.flag = True
@@ -91,13 +93,13 @@ class SampleFrame(wx.Frame):
             os.makedirs(data_dir)
             os.makedirs(fig_dir)
             os.makedirs(api_dir)
-            with open(res_json, "w") as file:
+            with open(res_json, "w", encoding=self.enc, errors='ignore') as file:
                 json.dump({"ChatGPT":[]}, file, indent=2)
-            with open(his_json, "w") as file:
+            with open(his_json, "w", encoding=self.enc, errors='ignore') as file:
                 json.dump({}, file, indent=2)
-            with open(word_json, "w") as file:
+            with open(word_json, "w", encoding=self.enc, errors='ignore') as file:
                 json.dump({}, file, indent=2)
-            with open(api_key, "w") as file:
+            with open(api_key, "w", encoding=self.enc, errors='ignore') as file:
                 pass
             init = HistoryWrite()
             init.history_init()
@@ -127,7 +129,7 @@ class SampleFrame(wx.Frame):
 
     def reading(self, event):
         #subprocess.Popen(["python3", "reading.py"])
-        with open(path("apikey", "api"), "r") as f:
+        with open(path("apikey", "api"), "r", encoding=self.enc, errors='ignore') as f:
             key = f.read().strip()
         if key == "": # APIキーが入力されていなければ
             error = wx.MessageDialog(self, "APIキーが登録されていません。", "エラー", wx.ICON_ERROR | wx.OK)
@@ -153,7 +155,7 @@ class SampleFrame(wx.Frame):
     def save(self, event):
         dlg = wx.MessageDialog(self, "APIキーを更新しますか？", "確認", wx.YES_NO | wx.ICON_QUESTION)
         if dlg.ShowModal() == wx.ID_YES:
-            with open(path("apikey", "api"), "w") as f:
+            with open(path("apikey", "api"), "w", encoding=self.enc, errors='ignore') as f:
                 f.write(self.ctrl_apikey.GetValue().strip())
             self.ctrl_apikey.Clear()
         else:

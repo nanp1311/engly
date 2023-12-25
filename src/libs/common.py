@@ -1,16 +1,23 @@
 # 複数のファイルに共通する関数の定義
 import wx
 import json
+import platform
 from os.path import expanduser
+
+system = platform.system()
+if system == "Windows":
+    enc = 'cp932'
+else:
+    enc = 'utf-8'
 
 # jsonファイルの読み込み
 def json_open(filename):
-    with open(filename, "r") as json_file:
+    with open(filename, "r", encoding=enc, errors='ignore') as json_file:
         return json.load(json_file)
 
 # jsonファイルに書き込み
 def json_write(filename, json_data):
-    with open(filename, "w") as json_file:
+    with open(filename, "w", encoding=enc, errors='ignore') as json_file:
         json.dump(json_data, json_file, indent=2, ensure_ascii=False)
 
 # ファイルのパスを返す

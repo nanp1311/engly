@@ -29,11 +29,15 @@
 - 品詞も出す
 - Listの単語を順番に表示するボタン
 - Listの単語をランダムに表示するボタン
-- ユーザー側からのjsonファイルの指定
-- ChatGPTの使い方の改良
-- 言語のタブ分け
+- ChatGPTの使い方、質問文、質問内容の改良
 - メニューバー、終了方法の選択肢を増やす
 - 英文の解説
+- リストの編集
+- 複数リストの登録、変更
+- コンボボックスに検索候補的な奴つける
+- 複数言語対応
+- wxPythonのインストールがめちゃくちゃ長いのをどうにかしたい
+- スクロールが冗長
 
 ## 疑問点
 - tar.gzと.whlがなにかわからない(ソースとビルド済？)
@@ -43,6 +47,65 @@
 - MacでListが動かない -> 完了
 - 一部のMacで文字の色がおかしい
 - ListにてMacで意味を表示すると文字の上部が一部表示されない -> SetMinSize, borderでは解決できず
+
+## 1225
+#### Windowsで謎のエラー
+```Windows PowerShall
+UnicodeDecodeError: 'cp932' codec can't decode byte 0xef in position 53: illegal multibyte sequence
+```
+- 文字コードがおかしい？
+- エラー原因となった(っぽい)リストを消してしまった(アホ)
+- ChatGPTで生成したボタンからリストに登録した後で起こった
+- リストに別の単語を登録し直して再度実行したとこと何も起こらなかった
+- 下記記事に倣ってencoding="utf-8"を追加
+- エラー出たらまた直す
+- [【Python】UnicodeDecodeError: 'cp932' ...エラーの原因と解決方法](https://qiita.com/Ryo-0131/items/27829642d2f767507db0)
+- 別のエラーが出た
+```Windows PowerShall
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8c in position 124: invalid start byte
+```
+- utf-8で指定するとWindowsでは動かないらしい
+```ChatGPT
+You
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8c in position 124: invalid start byte
+
+ChatGPT
+このエラーは、UnicodeDecodeErrorで、文字列をUTF-8エンコーディングでデコードしようとした際に発生します。具体的には、バイト列の中にUTF-8エンコーディングにおいて無効な開始バイトとして扱われる0x8cという値が含まれているためです。
+
+このエラーメッセージを解決するためには、いくつかのアプローチが考えられます。以下はそのいくつかの例です：
+
+エンコーディングを指定してファイルを開く： ファイルを開く際に、適切なエンコーディングを指定してみてください。例えば、cp932などが試してみる価値があります。以下は、cp932でファイルを開く例です。
+
+```
+```python
+with open('ファイルのパス', encoding='cp932') as file:
+    # ファイルの中身を読み込む処理
+```
+```ChatGPT
+エラーが発生したバイト列を無視する： errors='ignore'という引数を使って、エラーが発生した箇所を無視してデコードを試みることができます。ただし、これはエラー箇所の情報が失われるため注意が必要です。
+```
+```python
+with open('ファイルのパス', encoding='utf-8', errors='ignore') as file:
+    # ファイルの中身を読み込む処理
+```
+```ChatGPT
+エンコーディングを自動的に判定するツールを使用する： chardetなどのライブラリを使用して、ファイルのエンコーディングを自動的に検出し、それに基づいてデコードすることもできます。
+```
+```python
+import chardet
+
+with open('ファイルのパス', 'rb') as file:
+    result = chardet.detect(file.read())
+    encoding = result['encoding']
+
+with open('ファイルのパス', encoding=encoding) as file:
+    # ファイルの中身を読み込む処理
+```
+```ChatGPT
+これらのアプローチのどれが最適かは、具体的な状況によります。データの内容や使用しているプログラムの要件に応じて、適切な方法を選択してください。
+```
+- Windowsでは'cp932'、ManとLinuxでは'utf-8'を指定することで決着
+- 結局一番最初のエラーは解決してない気がするのでignoreも一応入れておく
 
 ## 1222
 #### MacでListが動かない問題

@@ -174,15 +174,17 @@ class SampleFrame(wx.Frame):
         if self.system == "Windows":
             self.x = 720
             self.y = 480
+            self.enc = 'cp932'
         else:
             self.x = 800
             self.y = 600
+            self.enc = 'utf-8'
         wx.Frame.__init__(self, parent, title=title, pos=(0, 0), size=(self.x, self.y))
         scrollable_window = MyScrollableWindow(self)
         self.__set_apikey()
 
     def __set_apikey(self):
-        with open(path("apikey", "api"), "r") as f:
+        with open(path("apikey", "api"), "r", encoding=self.enc, errors='ignore') as f:
             openai.api_key = f.read().strip()
 
     # xボタン押下時の処理
