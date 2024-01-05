@@ -54,7 +54,7 @@
 UnicodeDecodeError: 'cp932' codec can't decode byte 0xef in position 53: illegal multibyte sequence
 ```
 - 文字コードがおかしい？
-- エラー原因となった(っぽい)リストを消してしまった(アホ)
+- エラー原因となった(っぽい)リストを消してしまった
 - ChatGPTで生成したボタンからリストに登録した後で起こった
 - リストに別の単語を登録し直して再度実行したとこと何も起こらなかった
 - 下記記事に倣ってencoding="utf-8"を追加
