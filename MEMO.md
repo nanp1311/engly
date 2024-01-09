@@ -24,7 +24,7 @@
 - python3 -m twine upload dist/*
 - python3 -m pip install engly
 
-## 欲しい機能
+## 欲しい機能、改善点
 - ChatGPTの履歴確認
 - 品詞も出す
 - Listの単語を順番に表示するボタン
@@ -38,6 +38,7 @@
 - 複数言語対応
 - wxPythonのインストールがめちゃくちゃ長いのをどうにかしたい
 - スクロールが冗長
+- englyという名前から何か別のものにしたい([englyはもうある](https://engly.com/))
 
 ## 疑問点
 - tar.gzと.whlがなにかわからない(ソースとビルド済？)
